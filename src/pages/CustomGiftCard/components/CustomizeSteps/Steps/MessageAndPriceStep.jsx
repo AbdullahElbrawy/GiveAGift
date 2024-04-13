@@ -22,6 +22,7 @@ export default function MessageAndPriceStep({
 	onTextColorChange,
 	onFontChange,
 }) {
+	const [fonts, setFonts] = useState([]);  // State to store fetched fonts
 	const [fontAnchorEl, setFontAnchorEl] = useState(null);
 	const isFontMenuOpen = Boolean(fontAnchorEl);
 	const fontClassName =
@@ -37,7 +38,7 @@ export default function MessageAndPriceStep({
 		onFontChange(e.target.textContent);
 		setFontAnchorEl(null);
 	};
-    const [fonts, setFonts] = useState([]);  // State to store fetched fonts
+
 
 	useEffect(() => {
 		let isMounted = true;  // Flag to check if component is still mounted
