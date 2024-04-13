@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios'
+import TransactionsTable from './TransactionsTable'; // Assuming you save it in the same directory
+
 const Dashboard = () => {
 
     const [formData, setFormData] = useState({
@@ -246,6 +248,9 @@ const Dashboard = () => {
                     </form>
 
                 </div>
+                <div className="mt-10">
+                <TransactionsTable /> {/* Place the transactions table on the dashboard */}
+            </div>
             </div>
         </div>
 
