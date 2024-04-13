@@ -8,9 +8,9 @@ import {
 	TextField,
 	Typography,
 } from "@mui/material";
-import { PRICE_LIMITS } from "../../../hooks/useCardSittingReducer";
 import { TextFields } from "@mui/icons-material";
-import React,{ useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 export default function MessageAndPriceStep({
 	t,
@@ -23,29 +23,31 @@ export default function MessageAndPriceStep({
 	onFontChange,
 }) {
 	const [fontAnchorEl, setFontAnchorEl] = useState(null);
+	const [fonts, setFonts] = useState([]);
 	const isFontMenuOpen = Boolean(fontAnchorEl);
-	const fontClassName =
-		font === "Noto Sans Arabic"
-			? "*:!font-notoSansArabic"
-			: font === "Amiri"
-			? "*:!font-amiri"
-			: font === "Cairo"
-			? "*:!font-cairo"
-			: "";
+	const fontClassName = 
+		font === "Noto Sans Arabic" ? "*:!font-notoSansArabic" :
+		font === "Amiri" ? "*:!font-amiri" :
+		font === "Cairo" ? "*:!font-cairo" : "";
+
+	useEffect(() => {
+		let isMounted = true;  // Flag to check if component is still mounted
+		axios.get('https://gifts-backend.onrender.com/fonts')
+			.then(response => {
+				if (isMounted) setFonts(response.data);
+			})
+			.catch(error => {
+				console.error('Failed to fetch fonts:', error);
+			});
+		return () => {
+			isMounted = false;  // Clean up the isMounted flag
+		};
+	}, []);
 
 	const handleFontChange = (e) => {
 		onFontChange(e.target.textContent);
 		setFontAnchorEl(null);
 	};
-    const [fonts, setFonts] = useState([]);  // State to store fetched fonts
-
-    useEffect(() => {
-        axios.get('https://gifts-backend.onrender.com/fonts')
-            .then(response => {
-                setFonts(response.data);
-            })
-            .catch(error => console.error('Failed to fetch fonts:', error));
-    }, []);
 
 	return (
 		<div className="flex flex-col items-center gap-6">
