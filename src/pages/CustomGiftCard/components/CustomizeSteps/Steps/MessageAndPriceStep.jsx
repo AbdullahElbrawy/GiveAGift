@@ -5,7 +5,8 @@ import {
 	InputAdornment,
 	Menu,
 	MenuItem,
-	TextField,
+	Input,
+	
 	Typography,
 } from "@mui/material";
 import { PRICE_LIMITS } from "../../../hooks/useCardSittingReducer";
@@ -53,7 +54,7 @@ export default function MessageAndPriceStep({
 					<FormLabel className="capitalize" classes={{ root: "!text-lg" }}>
 						{t("customCard.message.message")}
 					</FormLabel>
-					<TextField
+					<Input
 						variant="outlined"
 						multiline
 					
@@ -61,7 +62,7 @@ export default function MessageAndPriceStep({
 						onChange={(e) => onMessageChange(e.target.value)}
 						fullWidth
 					
-						className={`textfield-multiline [&_textarea]:pe-28 ${fontClassName}`}
+						className={`textfield-multiline  ${fontClassName}`}
 						InputProps={{
 							
 							maxLength: 100 , // Set the maximum number of characters,
