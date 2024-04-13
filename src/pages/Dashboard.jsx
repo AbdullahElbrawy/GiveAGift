@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios'
-import TransactionsTable from './TransactionsTable'; // Assuming you save it in the same directory
+import TransactionsTable from './Transactions'; // Assuming you save it in the same directory
 
 const Dashboard = () => {
 
