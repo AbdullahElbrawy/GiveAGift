@@ -70,7 +70,7 @@ export default function CardPreview({ cardSitting, back, ShowBrand }) {
                 {cardSitting.price} {t("currency")}
               </Typography>
               <div className="absolute bottom-4 left-4">
-                <img src="/images/logo.webp" alt="logo" width={100} />
+                <img src="https://i.imgur.com/wkyCwby.png" alt="logo" width={100} />
               </div>
             </div>
           )}

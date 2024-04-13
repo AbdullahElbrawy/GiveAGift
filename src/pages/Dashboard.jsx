@@ -248,9 +248,10 @@ const Dashboard = () => {
                     </form>
 
                 </div>
-                <div className="mt-10">
-                <TransactionsTable /> {/* Place the transactions table on the dashboard */}
+            
             </div>
+            <div className="mt-10">
+                <TransactionsTable /> {/* Place the transactions table on the dashboard */}
             </div>
         </div>
 

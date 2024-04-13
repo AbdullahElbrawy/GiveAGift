@@ -57,7 +57,7 @@ const GlobalFilter = ({ filter, setFilter }) => {
     return (
         <div>
             <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
-            <table {...getTableProps()} className="min-w-full divide-y divide-gray-200">
+            <table {...getTableProps()} className="min-w-full divide-y divide-gray-200 mt-5">
                 <thead className="bg-gray-50">
                     {headerGroups.map(headerGroup => (
                         <tr {...headerGroup.getHeaderGroupProps()}>
