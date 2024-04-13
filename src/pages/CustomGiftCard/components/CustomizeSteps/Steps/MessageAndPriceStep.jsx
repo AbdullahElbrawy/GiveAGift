@@ -22,23 +22,13 @@ export default function MessageAndPriceStep({
 	onTextColorChange,
 	onFontChange,
 }) {
-	const [fonts, setFonts] = useState([]);  // State to store fetched fonts
 	const [fontAnchorEl, setFontAnchorEl] = useState(null);
+	const [fonts, setFonts] = useState([]);
 	const isFontMenuOpen = Boolean(fontAnchorEl);
-	const fontClassName =
-		font === "Noto Sans Arabic"
-			? "*:!font-notoSansArabic"
-			: font === "Amiri"
-			? "*:!font-amiri"
-			: font === "Cairo"
-			? "*:!font-cairo"
-			: "";
-
-	const handleFontChange = (e) => {
-		onFontChange(e.target.textContent);
-		setFontAnchorEl(null);
-	};
-
+	const fontClassName = 
+		font === "Noto Sans Arabic" ? "*:!font-notoSansArabic" :
+		font === "Amiri" ? "*:!font-amiri" :
+		font === "Cairo" ? "*:!font-cairo" : "";
 
 	useEffect(() => {
 		let isMounted = true;  // Flag to check if component is still mounted
@@ -53,6 +43,12 @@ export default function MessageAndPriceStep({
 			isMounted = false;  // Clean up the isMounted flag
 		};
 	}, []);
+
+	const handleFontChange = (e) => {
+		onFontChange(e.target.textContent);
+		setFontAnchorEl(null);
+	};
+
 
 	return (
 		<div className="flex flex-col items-center gap-6">
