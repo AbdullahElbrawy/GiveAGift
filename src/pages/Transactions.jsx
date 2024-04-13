@@ -8,7 +8,7 @@ const GlobalFilter = ({ filter, setFilter }) => {
     useEffect(() => {
         const timeout = setTimeout(() => {
             setFilter(value);
-        }, 300); // Debounce filtering
+        }, 300); // wait 300ms after the last key stroke to set the filter
         return () => clearTimeout(timeout);
     }, [value, setFilter]);
 
@@ -31,7 +31,13 @@ const TransactionsTable = () => {
         const fetchData = async () => {
             try {
                 const response = await axios.get('https://gifts-backend.onrender.com/api/transactions');
-                setData(response.data);
+                setData(response.data.map(tr => ({
+                    ...tr,
+                    cardTitles: tr.cartDetails.map(d => d.cardTitle).join(", "),
+                    cardDescriptions: tr.cartDetails.map(d => d.cardDescription).join(", "),
+                    brandNames: tr.cartDetails.map(d => d.brandName).join(", "),
+                    brandLogos: tr.cartDetails.map(d => d.brandLogo)
+                })));
             } catch (error) {
                 console.error('Failed to fetch transactions:', error);
             }
@@ -46,10 +52,10 @@ const TransactionsTable = () => {
         { Header: 'Message Date', accessor: 'messageDate' },
         { Header: 'Card URL', accessor: 'cardUrl', Cell: ({ value }) => <a href={value} target="_blank" rel="noopener noreferrer">View Card</a> },
         { Header: 'Process Date', accessor: 'processDate' },
-        { Header: 'Card Title', accessor: 'cartDetails', Cell: ({ value }) => value.map(v => v.cardTitle).join(", ") },
-        { Header: 'Card Description', accessor: 'cartDetails', Cell: ({ value }) => value.map(v => v.cardDescription).join(", ") },
-        { Header: 'Brand Name', accessor: 'cartDetails', Cell: ({ value }) => value.map(v => v.brandName).join(", ") },
-        { Header: 'Brand Logo', accessor: 'cartDetails', Cell: ({ value }) => value.map(v => v.brandLogo ? <img src={v.brandLogo} alt="Brand" style={{ width: 50, height: 50 }}/> : 'N/A') }
+        { Header: 'Card Titles', accessor: 'cardTitles' },
+        { Header: 'Card Descriptions', accessor: 'cardDescriptions' },
+        { Header: 'Brand Names', accessor: 'brandNames' },
+        { Header: 'Brand Logos', accessor: 'brandLogos', Cell: ({ value }) => value.map((url, index) => url ? <img key={index} src={url} alt="Brand" style={{ width: 50, height: 50 }}/> : 'N/A') }
     ], []);
 
     const {
@@ -82,7 +88,9 @@ const TransactionsTable = () => {
                             {headerGroup.headers.map(column => (
                                 <th {...column.getHeaderProps(column.getSortByToggleProps())} className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     {column.render('Header')}
-                                    <span>{column.isSorted ? (column.isSortedDesc ? ' 🔽' : ' 🔼') : ''}</span>
+                                    <span>
+                                        {column.isSorted ? (column.isSortedDesc ? ' 🔽' : ' 🔼') : ''}
+                                    </span>
                                 </th>
                             ))}
                         </tr>
