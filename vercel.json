@@ -3,22 +3,24 @@
   "builds": [
     {
       "src": "package.json",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "build/**",
-      "use": "@vercel/static"
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
     }
   ],
   "routes": [
     {
-      "src": "/server/(.*)",
-      "dest": "/server/$1.js"
+      "src": "/api/(.*)",
+      "dest": "/api/$1.js"
     },
     {
-      "src": "/(.*)",
-      "headers": { "cache-control": "s-maxage=1, stale-while-revalidate" },
-      "dest": "/build/index.html"
+      "src": "/(.*\\.(ico|html|js|json|png|jpg|css|svg))",
+      "dest": "/$1"
+    },
+    {
+      "src": "/.*",
+      "dest": "/index.html"
     }
   ],
   "env": {
