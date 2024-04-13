@@ -3,19 +3,30 @@
   "builds": [
     {
       "src": "package.json",
-      "use": "@vercel/static-build"
-     
+      "use": "@vercel/node"
+    },
+    {
+      "src": "build/**",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
     {
-      "src": "/server/(.*)",
-      "dest": "/server/$1.js"
+      "src": "/api/(.*)",
+      "dest": "/api/$1.js"
     },
     {
-      "src": "/(.*)/",
+      "src": "/static/(.*)",
+      "dest": "/static/$1"
+    },
+    {
+      "src": "/(.*).(js|css|map|ico|txt)",
+      "dest": "/$1.$2"
+    },
+    {
+      "src": "/.*",
       "headers": { "cache-control": "s-maxage=1, stale-while-revalidate" },
-      "dest": "/build/index.html"
+      "dest": "/index.html"
     }
   ],
   "env": {
