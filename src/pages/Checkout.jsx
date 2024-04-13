@@ -171,7 +171,8 @@ const [schedule, setSchedule] = useState(dayjs()); // Adjusted to use the curren
               const payload = {
                 scheduleDate: scheduleDate.toISOString(),
                 scheduleState:scheduleState,
-                phone:`966${instanceCard.items[0].receiverInfo.phone}`
+                phone:`966${instanceCard.items[0].receiverInfo.phone}`,
+                paymentValue:totalPrice.toFixed()
               };
               await axios.put(
                 `https://gifts-backend.onrender.com/api/cart-update-payment/${instanceCard._id}`,
