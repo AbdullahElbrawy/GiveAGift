@@ -28,10 +28,10 @@ export default function MessageAndPriceStep({
 		font === "Noto Sans Arabic"
 			? "*:!font-notoSansArabic"
 			: font === "Amiri"
-			? "*:!font-amiri"
-			: font === "Cairo"
-			? "*:!font-cairo"
-			: "";
+				? "*:!font-amiri"
+				: font === "Cairo"
+					? "*:!font-cairo"
+					: "";
 
 	const handleFontChange = (e) => {
 		onFontChange(e.target.textContent);
@@ -55,12 +55,17 @@ export default function MessageAndPriceStep({
 					</FormLabel>
 					<TextField
 						variant="outlined"
-						value={message}
 						multiline
-						maxRows={3} 
+						maxRows={3}
+						value={message}
 						onChange={(e) => onMessageChange(e.target.value)}
 						fullWidth
 						className={`textfield-multiline [&_textarea]:pe-28 ${fontClassName}`}
+						InputProps={{
+							style: {
+								wordWrap: 'break-word'  // Ensures text wraps to prevent overflow
+							}
+						}}
 					/>
 
 					<div className="absolute end-3 bottom-0 -translate-y-3 flex items-center gap-3">
