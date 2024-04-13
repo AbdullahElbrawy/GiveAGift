@@ -51,13 +51,13 @@ export default function CardPreview({ cardSitting, back, ShowBrand }) {
             </>
           ) : (
             <div
-              className="flex flex-col justify-center items-center text-center  p-4 gap-2 h-full"
+              className="flex flex-col justify-center items-center text-center w-[250px]  p-4 gap-2 h-full"
               style={{ color: cardSitting.textColor }}
             >
               <Typography
                 variant="h5"
                 component="p"
-                className={`${fontClassName}  p-4 transition-colors`}
+                className={`${fontClassName} word-wrap  p-4 transition-colors`}
               >
                 {cardSitting.message}
               </Typography>
