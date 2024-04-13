@@ -53,13 +53,13 @@ export default function MessageAndPriceStep({
 					<FormLabel className="capitalize" classes={{ root: "!text-lg" }}>
 						{t("customCard.message.message")}
 					</FormLabel>
-					<input
-						type="text"
+					<textarea
 						value={message}
 						onChange={(e) => onMessageChange(e.target.value)}
 						className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${fontClassName}`}
-						maxLength={100}
+						maxLength={80}
 						style={{ wordWrap: 'break-word' }} // Ensures text wraps to prevent overflow
+						rows={4} // Sets the visible lines of text in the textarea
 					/>
 
 					{/* Existing button and icon code */}
@@ -70,7 +70,7 @@ export default function MessageAndPriceStep({
 							<IconButton onClick={(e) => setFontAnchorEl(e.target)} id="fonts-menu" aria-controls={open ? "fonts-menu" : undefined} aria-haspopup="true" aria-expanded={open ? "true" : undefined}>
 								<TextFields />
 							</IconButton>
-							<Menu id="fonts-menu" anchorEl={fontAnchorEl} open={isFontMenuOpen} onClose={() => setFontAnchorEl(null)} MenuListProps={{"aria-labelledby": "fonts-menu"}} dir="ltr">
+							<Menu id="fonts-menu" anchorEl={fontAnchorEl} open={isFontMenuOpen} onClose={() => setFontAnchorEl(null)} MenuListProps={{ "aria-labelledby": "fonts-menu" }} dir="ltr">
 								<MenuItem onClick={handleFontChange}>default</MenuItem>
 								<MenuItem onClick={handleFontChange}>Noto Sans Arabic</MenuItem>
 								<MenuItem onClick={handleFontChange}>Amiri</MenuItem>
