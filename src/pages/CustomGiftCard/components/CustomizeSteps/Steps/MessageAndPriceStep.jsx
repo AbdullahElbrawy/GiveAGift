@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { PRICE_LIMITS } from "../../../hooks/useCardSittingReducer";
 import { TextFields } from "@mui/icons-material";
-import React,{ useState,useEffect } from "react";
+import { useState } from "react";
 
 export default function MessageAndPriceStep({
 	t,
@@ -23,32 +23,20 @@ export default function MessageAndPriceStep({
 	onFontChange,
 }) {
 	const [fontAnchorEl, setFontAnchorEl] = useState(null);
-	const [fonts, setFonts] = useState([]);
 	const isFontMenuOpen = Boolean(fontAnchorEl);
-	const fontClassName = 
-		font === "Noto Sans Arabic" ? "*:!font-notoSansArabic" :
-		font === "Amiri" ? "*:!font-amiri" :
-		font === "Cairo" ? "*:!font-cairo" : "";
-
-	useEffect(() => {
-		let isMounted = true;  // Flag to check if component is still mounted
-		axios.get('https://gifts-backend.onrender.com/fonts')
-			.then(response => {
-				if (isMounted) setFonts(response.data);
-			})
-			.catch(error => {
-				console.error('Failed to fetch fonts:', error);
-			});
-		return () => {
-			isMounted = false;  // Clean up the isMounted flag
-		};
-	}, []);
+	const fontClassName =
+		font === "Noto Sans Arabic"
+			? "*:!font-notoSansArabic"
+			: font === "Amiri"
+			? "*:!font-amiri"
+			: font === "Cairo"
+			? "*:!font-cairo"
+			: "";
 
 	const handleFontChange = (e) => {
 		onFontChange(e.target.textContent);
 		setFontAnchorEl(null);
 	};
-
 
 	return (
 		<div className="flex flex-col items-center gap-6">
@@ -88,7 +76,7 @@ export default function MessageAndPriceStep({
 						></button>
 						<div>
 							<IconButton
-								onClick={(e) => setFontAnchorEl(e.currentTarget)}
+								onClick={(e) => setFontAnchorEl(e.target)}
 								id="fonts-menu"
 								aria-controls={open ? "fonts-menu" : undefined}
 								aria-haspopup="true"
@@ -97,22 +85,20 @@ export default function MessageAndPriceStep({
 								<TextFields />
 							</IconButton>
 							<Menu
-                id="fonts-menu"
-                anchorEl={fontAnchorEl}
-                open={Boolean(fontAnchorEl)}
-                onClose={() => setFontAnchorEl(null)}
-                MenuListProps={{
-                    "aria-labelledby": "fonts-menu",
-                }}
-                dir="ltr"
-            >
-                {fonts.map((fontFile, index) => (
-                    <MenuItem key={index} onClick={() => { handleFontChange(fontFile); setFontAnchorEl(null); }}>
-                        {fontFile}
-                    </MenuItem>
-                ))}
-            </Menu>
-        
+								id="fonts-menu"
+								anchorEl={fontAnchorEl}
+								open={isFontMenuOpen}
+								onClose={() => setFontAnchorEl(null)}
+								MenuListProps={{
+									"aria-labelledby": "fonts-menu",
+								}}
+								dir="ltr"
+							>
+								<MenuItem onClick={handleFontChange}>default</MenuItem>
+								<MenuItem onClick={handleFontChange}>Noto Sans Arabic</MenuItem>
+								<MenuItem onClick={handleFontChange}>Amiri</MenuItem>
+								<MenuItem onClick={handleFontChange}>Cairo</MenuItem>
+							</Menu>
 						</div>
 					</div>
 				</FormControl>
