@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { PRICE_LIMITS } from "../../../hooks/useCardSittingReducer";
 import { TextFields } from "@mui/icons-material";
-import React,{ useState } from "react";
+import React,{ useState,useEffect } from "react";
 
 export default function MessageAndPriceStep({
 	t,
