@@ -42,8 +42,8 @@ export default function CardPreview({ cardSitting, back, ShowBrand }) {
                   <img
                     src={cardSitting.brand.logoWithoutBackground}
                     alt={`${cardSitting.brand.logoName} logo`}
-                    width={60}
-                    height={60}
+                    width={85}
+                    height={85}
                     className="rounded-2xl   transition duration-500 group-hover:opacity-0 group-hover:scale-75 z-10"
                   />
                 ) : null}
@@ -84,7 +84,7 @@ export default function CardPreview({ cardSitting, back, ShowBrand }) {
               src={cardSitting.brand.logo}
               alt={cardSitting.brand.logoName}
               className="[&_img]:object-contain cursor-pointer"
-              sx={{ width: 56, height: 56 }}
+              sx={{ width: 80 , height: 80 }}
               onClick={()=>navToUrl(cardSitting.brand.brandUrl)}
             />
             {cardSitting.brand.logoName}
