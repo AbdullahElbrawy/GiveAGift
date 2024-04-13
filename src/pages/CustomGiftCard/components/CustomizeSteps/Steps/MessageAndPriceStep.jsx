@@ -57,7 +57,7 @@ export default function MessageAndPriceStep({
 						value={message}
 						onChange={(e) => onMessageChange(e.target.value)}
 						className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${fontClassName}`}
-						maxLength={100}
+						maxLength={60}
 						wrap
 						style={{ wordWrap: 'break-word' }} // Ensures text wraps to prevent overflow
 						rows={4} // Sets the visible lines of text in the textarea
