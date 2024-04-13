@@ -57,7 +57,8 @@ export default function CardPreview({ cardSitting, back, ShowBrand }) {
               <Typography
                 variant="h5"
                 component="p"
-                className={`${fontClassName} word-wrap  p-4 transition-colors`}
+                className={`${fontClassName} word-wrap   p-4 transition-colors`}
+                style={'overflowWrap: anywhere'}
               >
                 {cardSitting.message}
               </Typography>
