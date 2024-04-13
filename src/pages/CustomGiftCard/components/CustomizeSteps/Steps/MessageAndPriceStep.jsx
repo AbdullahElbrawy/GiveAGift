@@ -39,13 +39,13 @@ export default function MessageAndPriceStep({
 	};
     const [fonts, setFonts] = useState([]);  // State to store fetched fonts
 
-    React.useEffect(() => {
+    useEffect(() => {
         axios.get('https://gifts-backend.onrender.com/fonts')
             .then(response => {
                 setFonts(response.data);
             })
             .catch(error => console.error('Failed to fetch fonts:', error));
-    }, [fonts]);
+    }, []);
 
 	return (
 		<div className="flex flex-col items-center gap-6">
