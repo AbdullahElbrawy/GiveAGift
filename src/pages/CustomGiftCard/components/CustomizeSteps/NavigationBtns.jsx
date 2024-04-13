@@ -34,11 +34,7 @@ export default function NavigationBtns({
     )
       return onError("Please enter a phone number of 8 digits , start with 5");
 
-    // dispatchCart({
-    //   type: "ADD_ITEM",
-    //   payload: { cardSitting, ready: false },
-    //   state: false,
-    // });
+
 
     // post to the server
     axios
@@ -87,7 +83,7 @@ export default function NavigationBtns({
     }
 
     onActiveStepChange(activeStep + 1);
-    console.log(cardSitting)
+   
   };
 
   return (

@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { PRICE_LIMITS } from "../../../hooks/useCardSittingReducer";
 import { TextFields } from "@mui/icons-material";
-import { useState } from "react";
+import React,{ useState } from "react";
 
 export default function MessageAndPriceStep({
 	t,
@@ -39,7 +39,7 @@ export default function MessageAndPriceStep({
 	};
     const [fonts, setFonts] = useState([]);  // State to store fetched fonts
 
-    useEffect(() => {
+    React.useEffect(() => {
         axios.get('https://gifts-backend.onrender.com/fonts')
             .then(response => {
                 setFonts(response.data);
