@@ -43,7 +43,7 @@ export const router = createBrowserRouter([
 				element: <Stores />,
 			},
 			{
-				path: "https://give-a-gift.vercel.app/dashboard/sarga123456789",
+				path: "/dashboard/sarga123456789",
 				element: <Dashboard />,
 			},
 			  { path: "*", element:  <Home /> },
