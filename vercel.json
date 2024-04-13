@@ -1,3 +1,4 @@
+
 {
   "version": 2,
   "builds": [
@@ -13,9 +14,9 @@
       "dest": "/server/$1.js"
     },
     {
-      "src": "/(.*)/",
+      "src": "/.*",
       "headers": { "cache-control": "s-maxage=1, stale-while-revalidate" },
-      "dest": "/build/index.html"
+      "dest": "/index.html"
     }
   ],
   "env": {
