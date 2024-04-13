@@ -60,8 +60,11 @@ export default function MessageAndPriceStep({
 						value={message}
 						onChange={(e) => onMessageChange(e.target.value)}
 						fullWidth
+				
 						className={`textfield-multiline [&_textarea]:pe-28 ${fontClassName}`}
 						InputProps={{
+							
+							maxLength: 150 , // Set the maximum number of characters,
 							style: {
 								wordWrap: 'break-word'  // Ensures text wraps to prevent overflow
 							}

@@ -15,7 +15,7 @@ export default function CardPreview({ cardSitting, back, ShowBrand }) {
     window.location.href = des
    }
   return (
-    <div className="sm:w-min-[280px] lg:w-[450px]  p-[20px] w-full ">
+    <div className="sm:w-min-[280px] lg:w-[450px]   w-full ">
       <figure
         className="relative  flex justify-center shrink-0 mx-auto   h-[180px] md:h-[240px] md:w-[450px]  rounded-2xl  overflow-hidden transition-colors"
         style={{ backgroundColor: cardSitting.color }}
@@ -57,14 +57,14 @@ export default function CardPreview({ cardSitting, back, ShowBrand }) {
               <Typography
                 variant="h5"
                 component="p"
-                className={`${fontClassName} transition-colors`}
+                className={`${fontClassName}  p-4 transition-colors`}
               >
                 {cardSitting.message}
               </Typography>
               <Typography
                 variant="h6"
                 component="p"
-                className={`${fontClassName} transition-colors`}
+                className={`${fontClassName}  p-4 transition-colors`}
               >
                 {cardSitting.price} {t("currency")}
               </Typography>
