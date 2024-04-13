@@ -56,17 +56,15 @@ export default function MessageAndPriceStep({
 					<TextField
 						variant="outlined"
 						multiline
-						maxRows={3}
+					
 						value={message}
 						onChange={(e) => onMessageChange(e.target.value)}
 						fullWidth
-						onInput = {(e) =>{
-							e.target.value = Math.max(0, parseInt(e.target.value) ).toString().slice(0,120)
-						}}
+					
 						className={`textfield-multiline [&_textarea]:pe-28 ${fontClassName}`}
 						InputProps={{
 							
-							
+							maxLength: 100 , // Set the maximum number of characters,
 							style: {
 								wordWrap: 'break-word'  // Ensures text wraps to prevent overflow
 							}
