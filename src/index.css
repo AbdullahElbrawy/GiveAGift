@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Amiri&family=Cairo:wght@400;500&family=Noto+Sans+Arabic:wght@400;500&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+	font-family: "ARAHAMAH1982";
+	src: url("/fonts/ARAHAMAH1982-REGULAR.OTF") format("opentype");
+}
+/* Overlay styles */
+.overlay {
+	@absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center text-white;
+}
+
+.MuiPickersLayout-root{
+	display: flex!important;
+	flex-direction: column;
+    justify-content: center;
+	align-items: center;
+}
+
+body,html{
+	overflow-x: hidden;
+
+}
+
+.textfield-multiline {
+	word-wrap: break-word;       
+	white-space: pre-wrap;       
+  }
