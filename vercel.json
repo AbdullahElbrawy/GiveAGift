@@ -4,25 +4,22 @@
     {
       "src": "package.json",
       "use": "@vercel/static-build"
-      
+     
     }
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "/api/$1.js"
+      "src": "/server/(.*)",
+      "dest": "/server/$1.js"
     },
     {
-      "src": "/(.*\\.(ico|html|js|json|png|jpg|css|svg))",
-      "dest": "/$1"
-    },
-    {
-      "src": "/.*",
+      "src": "/(.*)/",
       "headers": { "cache-control": "s-maxage=1, stale-while-revalidate" },
-      "dest": "/index.html"
+      "dest": "/build/index.html"
     }
   ],
   "env": {
     "NODE_ENV": "production"
   }
 }
+
