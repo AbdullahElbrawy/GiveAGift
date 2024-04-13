@@ -5,8 +5,6 @@ import {
 	InputAdornment,
 	Menu,
 	MenuItem,
-	Input,
-	
 	Typography,
 } from "@mui/material";
 import { PRICE_LIMITS } from "../../../hooks/useCardSittingReducer";
@@ -54,55 +52,24 @@ export default function MessageAndPriceStep({
 					<FormLabel className="capitalize" classes={{ root: "!text-lg" }}>
 						{t("customCard.message.message")}
 					</FormLabel>
-					<Input
-						variant="outlined"
-						multiline
-					
+					<input
+						type="text"
 						value={message}
 						onChange={(e) => onMessageChange(e.target.value)}
-						fullWidth
-					
-						className={`textfield-multiline  ${fontClassName}`}
-						InputProps={{
-							
-							maxLength: 100 , // Set the maximum number of characters,
-							style: {
-								wordWrap: 'break-word'  // Ensures text wraps to prevent overflow
-							}
-						}}
+						className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${fontClassName}`}
+						maxLength={100}
+						style={{ wordWrap: 'break-word' }} // Ensures text wraps to prevent overflow
 					/>
 
+					{/* Existing button and icon code */}
 					<div className="absolute end-3 bottom-0 -translate-y-3 flex items-center gap-3">
-						<button
-							className="w-8 h-8 bg-white border-4 rounded-full shadow-lg"
-							title="text color black"
-							onClick={() => onTextColorChange("white")}
-						></button>
-						<button
-							className="w-8 h-8 bg-black border-4 rounded-full shadow-lg"
-							title="text color black"
-							onClick={() => onTextColorChange("black")}
-						></button>
+						<button className="w-8 h-8 bg-white border-4 rounded-full shadow-lg" title="text color black" onClick={() => onTextColorChange("white")}></button>
+						<button className="w-8 h-8 bg-black border-4 rounded-full shadow-lg" title="text color black" onClick={() => onTextColorChange("black")}></button>
 						<div>
-							<IconButton
-								onClick={(e) => setFontAnchorEl(e.target)}
-								id="fonts-menu"
-								aria-controls={open ? "fonts-menu" : undefined}
-								aria-haspopup="true"
-								aria-expanded={open ? "true" : undefined}
-							>
+							<IconButton onClick={(e) => setFontAnchorEl(e.target)} id="fonts-menu" aria-controls={open ? "fonts-menu" : undefined} aria-haspopup="true" aria-expanded={open ? "true" : undefined}>
 								<TextFields />
 							</IconButton>
-							<Menu
-								id="fonts-menu"
-								anchorEl={fontAnchorEl}
-								open={isFontMenuOpen}
-								onClose={() => setFontAnchorEl(null)}
-								MenuListProps={{
-									"aria-labelledby": "fonts-menu",
-								}}
-								dir="ltr"
-							>
+							<Menu id="fonts-menu" anchorEl={fontAnchorEl} open={isFontMenuOpen} onClose={() => setFontAnchorEl(null)} MenuListProps={{"aria-labelledby": "fonts-menu"}} dir="ltr">
 								<MenuItem onClick={handleFontChange}>default</MenuItem>
 								<MenuItem onClick={handleFontChange}>Noto Sans Arabic</MenuItem>
 								<MenuItem onClick={handleFontChange}>Amiri</MenuItem>
@@ -112,6 +79,7 @@ export default function MessageAndPriceStep({
 					</div>
 				</FormControl>
 
+				{/* Price input remains as Material-UI TextField */}
 				<FormControl fullWidth>
 					<FormLabel className="capitalize" classes={{ root: "!text-lg" }}>
 						{t("customCard.message.price")}
@@ -130,14 +98,11 @@ export default function MessageAndPriceStep({
 						helperText={
 							price < PRICE_LIMITS.min || price > PRICE_LIMITS.max
 								? `price must be between ${PRICE_LIMITS.min} and ${PRICE_LIMITS.max}`
-								: `Enter price in SAR between ${PRICE_LIMITS.min} and ${PRICE_LIMITS.max} in english numbers`
+								: `Enter price in SAR between ${PRICE_LIMITS.min} and ${PRICE_LIMITS.max} in English numbers`
 						}
 						InputProps={{
 							endAdornment: (
-								<InputAdornment
-									position="end"
-									className="*:!text-gray-800 rtl:px-2"
-								>
+								<InputAdornment position="end" className="*:!text-gray-800 rtl:px-2">
 									{t("currency")}
 								</InputAdornment>
 							),
