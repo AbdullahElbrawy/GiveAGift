@@ -85,7 +85,7 @@ export default function MessageAndPriceStep({
 						></button>
 						<div>
 							<IconButton
-								onClick={(e) => setFontAnchorEl(e.target)}
+								onClick={(e) => setFontAnchorEl(e.currentTarget)}
 								id="fonts-menu"
 								aria-controls={open ? "fonts-menu" : undefined}
 								aria-haspopup="true"
