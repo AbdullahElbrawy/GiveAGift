@@ -1,18 +1,31 @@
 import React, { useMemo, useEffect, useState } from 'react';
 import { useTable, useSortBy, useFilters, useGlobalFilter, usePagination } from 'react-table';
-
 import axios from 'axios';
+
 const GlobalFilter = ({ filter, setFilter }) => {
+    const [value, setValue] = useState(filter);
+
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            setFilter(value);
+        }, 300); // Debounce filtering
+        return () => clearTimeout(timeout);
+    }, [value, setFilter]);
+
     return (
         <span>
             Search: {' '}
-            <input value={filter || ''} onChange={e => setFilter(e.target.value)} />
+            <input
+                value={value || ''}
+                onChange={e => setValue(e.target.value)}
+                placeholder="Type to search..."
+            />
         </span>
     );
 };
-  const TransactionsTable = () => {
+
+const TransactionsTable = () => {
     const [data, setData] = useState([]);
-    const [filter, setFilter] = useState("");
 
     useEffect(() => {
         const fetchData = async () => {
@@ -27,11 +40,16 @@ const GlobalFilter = ({ filter, setFilter }) => {
     }, []);
 
     const columns = useMemo(() => [
-        { Header: 'Transaction ID', accessor: 'cartId' },
+        { Header: 'Transaction ID', accessor: 'transactionId' },
+        { Header: 'Cart ID', accessor: 'cartId' },
         { Header: 'Payment Value', accessor: 'paymentValue' },
         { Header: 'Message Date', accessor: 'messageDate' },
         { Header: 'Card URL', accessor: 'cardUrl', Cell: ({ value }) => <a href={value} target="_blank" rel="noopener noreferrer">View Card</a> },
-        { Header: 'Process Date', accessor: 'processDate' }
+        { Header: 'Process Date', accessor: 'processDate' },
+        { Header: 'Card Title', accessor: 'cartDetails', Cell: ({ value }) => value.map(v => v.cardTitle).join(", ") },
+        { Header: 'Card Description', accessor: 'cartDetails', Cell: ({ value }) => value.map(v => v.cardDescription).join(", ") },
+        { Header: 'Brand Name', accessor: 'cartDetails', Cell: ({ value }) => value.map(v => v.brandName).join(", ") },
+        { Header: 'Brand Logo', accessor: 'cartDetails', Cell: ({ value }) => value.map(v => v.brandLogo ? <img src={v.brandLogo} alt="Brand" style={{ width: 50, height: 50 }}/> : 'N/A') }
     ], []);
 
     const {
@@ -64,9 +82,7 @@ const GlobalFilter = ({ filter, setFilter }) => {
                             {headerGroup.headers.map(column => (
                                 <th {...column.getHeaderProps(column.getSortByToggleProps())} className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     {column.render('Header')}
-                                    <span>
-                                        {column.isSorted ? (column.isSortedDesc ? ' 🔽' : ' 🔼') : ''}
-                                    </span>
+                                    <span>{column.isSorted ? (column.isSortedDesc ? ' 🔽' : ' 🔼') : ''}</span>
                                 </th>
                             ))}
                         </tr>
@@ -102,4 +118,5 @@ const GlobalFilter = ({ filter, setFilter }) => {
         </div>
     );
 };
-export default TransactionsTable
+
+export default TransactionsTable;
