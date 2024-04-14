@@ -34,7 +34,7 @@ const TransactionsTable = () => {
                 // Map the response data to match your table structure
                 setData(response.data.map(tr => ({
     
-                    cartID: tr.JSON.stringify(cartId)._id.toString(),
+                    cartID: tr?.JSON.stringify(cartId)._id.toString(),
                     paymentValue: tr.paymentValue,
                     messageDate: new Date(tr.messageDate).toLocaleString(),
                     cardUrl: tr.cardUrl,
