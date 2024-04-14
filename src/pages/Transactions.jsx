@@ -34,7 +34,7 @@ const TransactionsTable = () => {
                 // Map the response data to match your table structure
                 setData(response.data.map(tr => ({
                       
-                    cartID: tr?.cartId,
+                    transactionId: tr?.cartId,
                     paymentValue: tr.paymentValue,
                     messageDate: new Date(tr.messageDate).toLocaleString(),
                     cardUrl: tr.cardUrl,
@@ -53,7 +53,7 @@ const TransactionsTable = () => {
 
     const columns = useMemo(() => [
      
-        { Header: 'Cart ID', accessor: 'cartId' },
+        { Header: 'Transaction ID', accessor: 'transactionId' },
         { Header: 'Payment Value', accessor: 'paymentValue' },
         { Header: 'Message Date', accessor: 'messageDate' },
         { Header: 'Card URL', accessor: 'cardUrl', Cell: ({ value }) => <button href={value} target="_blank" rel="noopener noreferrer">View Card</button> },
