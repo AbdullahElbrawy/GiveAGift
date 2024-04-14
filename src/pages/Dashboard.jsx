@@ -228,7 +228,10 @@ const Dashboard = () => {
                     </button>
                 </form>
 
-                <div className='grid gap-8 border-2 border-black mt-10  py-10 px-10'>
+         
+            
+            </div>
+            <div className='grid gap-8 border-2 border-black mt-10  py-10 px-10'>
                     <form onSubmit={handleSubmitAssets}>
                         <div className="mb-5">
                             <label htmlFor="color" className="block text-gray-700 text-md font-bold mb-2">Color</label>
@@ -248,8 +251,6 @@ const Dashboard = () => {
                     </form>
 
                 </div>
-            
-            </div>
             <div className="mt-10">
                 <TransactionsTable /> {/* Place the transactions table on the dashboard */}
             </div>
