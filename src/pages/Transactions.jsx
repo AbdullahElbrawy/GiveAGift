@@ -56,7 +56,7 @@ const TransactionsTable = () => {
         { Header: 'Transaction ID', accessor: 'transactionId' },
         { Header: 'Payment Value', accessor: 'paymentValue' },
         { Header: 'Message Date', accessor: 'messageDate' },
-        { Header: 'Card URL', accessor: 'cardUrl', Cell: ({ value }) => <button href={value} target="_blank" rel="noopener noreferrer">View Card</button> },
+        { Header: 'Card URL', accessor: 'cardUrl', Cell: ({ value }) => <a href={value} target="_blank" rel="noopener noreferrer">View Card</a> },
         { Header: 'Process Date', accessor: 'processDate' },
      
         // { Header: 'Brand Logos', accessor: 'brandLogos', Cell: ({ value }) => value.map((url, index) => url ? <img key={index} src={url} alt="Brand" style={{ width: 50, height: 50 }}/> : 'N/A') }
