@@ -22,6 +22,7 @@ export const CartProvider = ({ children }) => {
             body: JSON.stringify(payload.ready ? {
               card: payload.cardSitting,
               receiverInfo: payload.receiverInfo,
+              custom:endpoint
             } : payload.cardSitting),
           })
             .then((response) => response.json())
