@@ -119,7 +119,7 @@ const TransactionsTable = () => {
                 </table>
             </div>
             {/* Pagination Controls */}
-            <div className="pagination">
+            <div className="pagination gap-3">
                 <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>{'<<'}</button>
                 <button onClick={() => previousPage()} disabled={!canPreviousPage}>Previous</button>
                 <button onClick={() => nextPage()} disabled={!canNextPage}>Next</button>
