@@ -20,7 +20,7 @@ const goToSite = (des)=>{
         />
      
 
-      <div className="flex justify-between items-center sm:flex-row flex-col w-full px-5 mt-4">
+      <div className="flex justify-between items-center sm:flex-row  gap-3  flex-col w-full px-5 mt-4">
         <h3 className="flex items-center gap-2 text-xl">
           <Avatar
             src={card.logoImage}
