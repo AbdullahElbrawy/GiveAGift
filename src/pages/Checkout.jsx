@@ -211,8 +211,8 @@ const initializePayment =async () => {
       setSessionDetails({ countryCode: "SAU", sessionId });
     var config = {
       sessionId: sessionId,
-      countryCode: sessionDetails.countryCode,
-      currencyCode: sessionDetails.currencyCode,
+      countryCode: "SAU",
+      currencyCode: "SAR",
       amount: totalPrice.toString(),
       cardViewId: "card-element-apply",
       callback: handlePaymentResponse,
