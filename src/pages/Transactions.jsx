@@ -33,7 +33,7 @@ const TransactionsTable = () => {
                 const response = await axios.get('https://gifts-backend.onrender.com/api/transactions');
                 // Map the response data to match your table structure
                 setData(response.data.map(tr => ({
-                    transactionId: tr.cartId._id.toString(),
+                    transactionId: tr.cartId.toString(),
             
                     paymentValue: tr.paymentValue,
                     messageDate: new Date(tr.messageDate).toLocaleString(),
