@@ -81,10 +81,10 @@ export default function CardPreview({ cardSitting, back, ShowBrand }) {
         <div className="flex justify-between items-center w-full px-5 mt-4">
           <h3 className="flex items-center gap-2 text-xl">
             <Avatar
-              src={cardSitting.brand.logo}
+              src={cardSitting.logoImage ? cardSitting.logoImage: cardSitting.brand.logoWithoutBackground}
               alt={cardSitting.brand.logoName}
               className="[&_img]:object-contain cursor-pointer"
-              sx={{ width: 80 , height: 80 }}
+              sx={{ width: 60 , height: 60 }}
               onClick={()=>navToUrl(cardSitting.brand.brandUrl)}
             />
             {cardSitting.brand.logoName}
