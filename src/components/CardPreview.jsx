@@ -32,7 +32,7 @@ export default function CardPreview({ cardSitting, back, ShowBrand }) {
                     src={cardSitting.shape}
                     height={200}
                     alt="gift card"
-                    className="rounded-2xl sm:min-w-[280px]  mx-auto  w-full   lg:w-[450px]     md:h-[240px]   h-[180px]  object-cover absolute  transition duration-500 group-hover:opacity-0 group-hover:scale-75 z-10"
+                    className="rounded-2xl sm:min-w-[280px] object-contain mx-auto  w-full   lg:w-[450px]     md:h-[240px]   h-[180px]  object-cover absolute  transition duration-500 group-hover:opacity-0 group-hover:scale-75 z-10"
                   />
                 ) : null}
               </div>
@@ -42,9 +42,9 @@ export default function CardPreview({ cardSitting, back, ShowBrand }) {
                   <img
                     src={cardSitting.brand.logoWithoutBackground}
                     alt={`${cardSitting.brand.logoName} logo`}
-                    width={85}
-                    height={85}
-                    className="rounded-2xl   transition duration-500 group-hover:opacity-0 group-hover:scale-75 z-10"
+                    width={65}
+                    height={65}
+                    className="rounded-2xl object-contain  transition duration-500 group-hover:opacity-0 group-hover:scale-75 z-10"
                   />
                 ) : null}
               </div>
@@ -83,7 +83,7 @@ export default function CardPreview({ cardSitting, back, ShowBrand }) {
             <Avatar
               src={cardSitting.logoImage ? cardSitting.logoImage: cardSitting.brand.logoWithoutBackground}
               alt={cardSitting.brand.logoName}
-              className="[&_img]:object-contain cursor-pointer"
+              className="[&_img]:object-contain object-contain cursor-pointer"
               sx={{ width: 60 , height: 60 }}
               onClick={()=>navToUrl(cardSitting.brand.brandUrl)}
             />
