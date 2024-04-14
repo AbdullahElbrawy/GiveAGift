@@ -10,80 +10,59 @@ export const CartProvider = ({ children }) => {
 
   const dispatchCart = useCallback(
     (action) => {
-      const { type, payload, state } = action;
-      console.log(payload, state);
+      const { type, payload } = action;
       switch (type) {
         case "ADD_ITEM":
-          payload.ready === true
-            ? fetch("https://gifts-backend.onrender.com/api/cartReady/", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                  card: payload.cardSitting,
-                  receiverInfo: payload.receiverInfo,
-                }),
-              })
-                .then((response) => response.json())
-                .then((data) => {
-                 
-                  // Update local cart state with the new item
-                  setCart((prev) => [
-                    ...prev,
-                    {
-                      ...data,
-                      ready: true,
-                      receiverInfo: payload.receiverInfo,
-                      brandUrl:payload.cardSitting.brandUrl
-                    },
-                  ]);
-                })
-                .catch((error) => {
-                  console.error("Error adding item:", error);
-                })
-            : fetch("https://gifts-backend.onrender.com/api/cartCustom/", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify(payload.cardSitting),
-              })
-                .then((response) => response.json())
-                .then((data) => {
-               
-                  // Update local cart state with the new item
-                  setCart((prev) => [...prev, data]);
-                })
-                .catch((error) => {
-                  console.error("Error adding item:", error);
-                });
-          break;
-        case "REMOVE_ITEM":
-       
-
-          //   state = cart[payload].ready === true ? true : false;
-          let ready = cart[payload].ready === true ? true : false;
-          // Assuming payload is the itemId to be removed
-          fetch(
-            `https://gifts-backend.onrender.com/api/CartRemove/remove/${cart[payload]._id}/${ready}`,
-            { method: "DELETE" }
-          )
+          const endpoint = payload.ready ? "cartReady" : "cartCustom";
+          fetch(`https://gifts-backend.onrender.com/api/${endpoint}/`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(payload.ready ? {
+              card: payload.cardSitting,
+              receiverInfo: payload.receiverInfo,
+            } : payload.cardSitting),
+          })
             .then((response) => response.json())
             .then((data) => {
-          
-              // Assuming your server response contains the updated cart items after removal
-              // Update local cart state with the updated items from the server
-              setCart((carts) => carts.filter((cart) => cart._id !== data._id));
+              setCart((prev) => [
+                ...prev,
+                {
+                  ...data,
+                  ready: payload.ready,
+                  receiverInfo: payload.receiverInfo,
+                  brandUrl: payload.cardSitting.brandUrl,
+                },
+              ]);
+            })
+            .catch((error) => {
+              console.error("Error adding item:", error);
+            });
+          break;
+        case "REMOVE_ITEM":
+          const { _id, ready } = cart[payload];
+          fetch(`https://gifts-backend.onrender.com/api/CartRemove/remove/${_id}/${ready}`, {
+            method: "DELETE",
+          })
+            .then((response) => {
+              if (response.ok) {
+                return response.json(); // or response.text() if the response is not in JSON format
+              }
+              throw new Error('Failed to delete item');
+            })
+            .then((data) => {
+              setCart((currentCart) => currentCart.filter((item) => item._id !== _id));
             })
             .catch((error) => {
               console.error("Error removing item:", error);
             });
           break;
-        // Handle other actions as needed
+        default:
+          console.log('Unhandled action type in cart context');
       }
     },
-    [setCart]
+    [setCart, cart]
   );
 
   return (
