@@ -85,7 +85,7 @@ const TransactionsTable = () => {
 
     return (
         <div>
-            {console.log(`okkkkkkkkkkkkkkkk`,data)}
+         
             <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
             <div className="overflow-x-auto">
                 <table {...getTableProps()} className="min-w-full divide-y divide-gray-200 mt-5">
