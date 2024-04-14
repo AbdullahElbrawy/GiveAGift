@@ -202,10 +202,15 @@ const loadScriptAndInitPayment = async () => {
   document.body.appendChild(script);
 };
 
-const initializePayment = () => {
+const initializePayment =async () => {
   if (window.myFatoorahAP) {
+    const response = await axios.post("https://gifts-backend.onrender.com/api/initiateSession");
+      const sessionId = response.data.Data.SessionId;
+
+      // Assuming SA for Saudi Arabia
+      setSessionDetails({ countryCode: "SAU", sessionId });
     var config = {
-      sessionId: sessionDetails.sessionId,
+      sessionId: sessionId,
       countryCode: sessionDetails.countryCode,
       currencyCode: sessionDetails.currencyCode,
       amount: totalPrice.toString(),
