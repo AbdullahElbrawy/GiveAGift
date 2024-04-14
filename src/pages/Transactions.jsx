@@ -49,6 +49,7 @@ const TransactionsTable = () => {
             }
         };
         fetchData();
+        console.log(data)
     }, []);
 
     const columns = useMemo(() => [
