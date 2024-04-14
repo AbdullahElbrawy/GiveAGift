@@ -33,8 +33,8 @@ const TransactionsTable = () => {
                 const response = await axios.get('https://gifts-backend.onrender.com/api/transactions');
                 // Map the response data to match your table structure
                 setData(response.data.map(tr => ({
-                    transactionId: tr.cartId.toString(),
-            
+    
+                    cartID: tr.cartId._id.toString(),
                     paymentValue: tr.paymentValue,
                     messageDate: new Date(tr.messageDate).toLocaleString(),
                     cardUrl: tr.cardUrl,
@@ -52,15 +52,13 @@ const TransactionsTable = () => {
     }, []);
 
     const columns = useMemo(() => [
-        { Header: 'Transaction ID', accessor: 'transactionId' },
+     
         { Header: 'Cart ID', accessor: 'cartId' },
         { Header: 'Payment Value', accessor: 'paymentValue' },
         { Header: 'Message Date', accessor: 'messageDate' },
-        { Header: 'Card URL', accessor: 'cardUrl', Cell: ({ value }) => <a href={value} target="_blank" rel="noopener noreferrer">View Card</a> },
+        { Header: 'Card URL', accessor: 'cardUrl', Cell: ({ value }) => <button href={value} target="_blank" rel="noopener noreferrer">View Card</button> },
         { Header: 'Process Date', accessor: 'processDate' },
-        { Header: 'Card Titles', accessor: 'cardTitles' },
-        { Header: 'Card Descriptions', accessor: 'cardDescriptions' },
-        { Header: 'Brand Names', accessor: 'brandNames' },
+     
         // { Header: 'Brand Logos', accessor: 'brandLogos', Cell: ({ value }) => value.map((url, index) => url ? <img key={index} src={url} alt="Brand" style={{ width: 50, height: 50 }}/> : 'N/A') }
     ], []);
 
