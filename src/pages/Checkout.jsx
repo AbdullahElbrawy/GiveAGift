@@ -191,7 +191,63 @@ const [schedule, setSchedule] = useState(dayjs()); // Adjusted to use the curren
     }
 };
 
+useEffect(() => {
+  loadScriptAndInitPayment();
+}, []);
 
+const loadScriptAndInitPayment = async () => {
+  const script = document.createElement("script");
+  script.src = "https://demo.myfatoorah.com/applepay/v2/applepay.js";
+  script.onload = () => initializePayment();
+  document.body.appendChild(script);
+};
+
+const initializePayment = () => {
+  if (window.myFatoorahAP) {
+    var config = {
+      sessionId: sessionDetails.sessionId,
+      countryCode: sessionDetails.countryCode,
+      currencyCode: sessionDetails.currencyCode,
+      amount: totalPrice.toString(),
+      cardViewId: "card-element-apply",
+      callback: handlePaymentResponse,
+      style: {
+        frameHeight: 51,
+        button: {
+          height: "35px",
+          text: "Pay with",
+          borderRadius: "8px"
+        }
+      }
+    };
+    window.myFatoorahAP.init(config);
+  }
+};
+
+const handlePaymentResponse = async(response) => {
+  if (response.sessionId) {
+    const fatoorahResponse = await window.myFatoorah.submit();
+    console.log("fatoorahResponse: ", fatoorahResponse);
+       // update the card to be paid
+          // update the card to be paid
+          const payload = {
+            scheduleDate: scheduleDate.toISOString(),
+            scheduleState:scheduleState,
+            phone:`966${instanceCard.items[0].receiverInfo.phone}`,
+            paymentValue:totalPrice
+          };
+          await axios.put(
+            `https://gifts-backend.onrender.com/api/cart-update-payment/${instanceCard._id}`,
+            payload,
+           
+          );
+  
+
+      navigate(`/gift-card-preview/${instanceCard._id}`);
+  } else {
+    console.error("Payment failed:", response);
+  }
+};
 
   // https://api-sa.myfatoorah.com/v2/RegisterApplePayDomain
 
@@ -297,7 +353,7 @@ const [schedule, setSchedule] = useState(dayjs()); // Adjusted to use the curren
             id="card-element2"
             // className="first-of-type:[&_iframe]:block last-of-type:[&_iframe]:!hidden  "
           ></div>
-
+<div id="card-element-apply"></div>
           <FormControlLabel
             control={<Checkbox name="agreeToTerms" />}
             label={t("checkout.rules")}
