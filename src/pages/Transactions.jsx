@@ -40,9 +40,9 @@ const TransactionsTable = () => {
                     cardUrl: tr.cardUrl,
                     processDate: new Date(tr.processDate).toLocaleString(),
                     // Assuming items is an array with all needed information
-                    cardTitles: tr?.items.map(item => item.cardFront || 'N/A').join(", "),
-                    cardDescriptions: tr?.items.map(item => item.brand || 'N/A').join(", "),
-                    brandNames: tr?.items.map(item => item.brandUrl || 'N/A').join(", ")
+                    cardTitles: tr?.items?.map(item => item.cardFront || 'N/A').join(", "),
+                    cardDescriptions: tr?.items?.map(item => item.brand || 'N/A').join(", "),
+                    brandNames: tr?.items?.map(item => item.brandUrl || 'N/A').join(", ")
                 })));
             } catch (error) {
                 console.error('Failed to fetch transactions:', error);
