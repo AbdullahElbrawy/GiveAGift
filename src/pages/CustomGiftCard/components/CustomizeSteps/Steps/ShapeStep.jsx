@@ -40,7 +40,7 @@ export default function ShapeStep({ t, shape, onShapeChange, color }) {
 				{shapes.map((cardShape) => (
 					<li
 						key={cardShape}
-						className={`rounded-2xl shadow-lg  md:h-[240px]   h-[180px]  object-cover  ${cardShape === shape ? "outline-none  ring-red-500" : ""
+						className={`rounded-2xl shadow-lg  md:h-[240px]   h-[180px]  object-contain  ${cardShape === shape ? "outline-none  ring-red-500" : ""
 							}`}
 
 						style={{ backgroundColor: color }}
