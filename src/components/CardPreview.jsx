@@ -37,14 +37,14 @@ export default function CardPreview({ cardSitting, back, ShowBrand }) {
                 ) : null}
               </div>
 
-              <div className={`absolute top-2 mix-blend-multiply   right-2 z-10`}>
+              <div className={`absolute top-2 mix-blend-lighten   right-2 z-10`}>
                 {cardSitting.brand.logoName ? (
                   <img
                     src={cardSitting.brand.logoWithoutBackground}
                     alt={`${cardSitting.brand.logoName} logo`}
                     width={65}
                     height={65}
-                    className="rounded-full object-fill mix-blend-multiply bg-white  transition duration-500 group-hover:opacity-0 group-hover:scale-75 z-10"
+                    className="rounded-full object-fill mix-blend-lighten bg-white  transition duration-500 group-hover:opacity-0 group-hover:scale-75 z-10"
                   />
                 ) : null}
               </div>
