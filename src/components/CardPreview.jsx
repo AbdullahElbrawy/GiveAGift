@@ -21,7 +21,7 @@ export default function CardPreview({ cardSitting, back, ShowBrand }) {
         style={{ backgroundColor: cardSitting.color }}
       >
         <div
-          
+          className={" w-[100%]      h-[180px] "}
           style={{ position: "relative", maxWidth: "480px" }}
         >
           {!back ? (
