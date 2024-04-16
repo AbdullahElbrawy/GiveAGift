@@ -21,7 +21,7 @@ export default function CardPreview({ cardSitting, back, ShowBrand }) {
         style={{ backgroundColor: cardSitting.color }}
       >
         <div
-          className={"   lg:w-[450px] mx-auto w-full sm:min-w-[280px]   md:h-[240px]    h-[180px] "}
+          className={"   lg:w-[450px] mx-auto w-full sm:min-w-[220px] md:min-w-[280px]  md:h-[240px]    h-[180px] "}
           style={{ position: "relative", maxWidth: "480px" }}
         >
           {!back ? (
@@ -37,14 +37,14 @@ export default function CardPreview({ cardSitting, back, ShowBrand }) {
                 ) : null}
               </div>
 
-              <div className={`absolute top-2 mix-blend-colorDodge  right-2 z-10`}>
+              <div className={`absolute top-2 mix-blend-color-dodge  right-2 z-10`}>
                 {cardSitting.brand.logoName ? (
                   <img
                     src={cardSitting.brand.logoWithoutBackground}
                     alt={`${cardSitting.brand.logoName} logo`}
                     width={65}
                     height={65}
-                    className="rounded-2xl object-fill mix-blend-colorDodge  transition duration-500 group-hover:opacity-0 group-hover:scale-75 z-10"
+                    className="rounded-2xl object-fill mix-blend-color-dodge  transition duration-500 group-hover:opacity-0 group-hover:scale-75 z-10"
                   />
                 ) : null}
               </div>
