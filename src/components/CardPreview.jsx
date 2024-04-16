@@ -15,13 +15,13 @@ export default function CardPreview({ cardSitting, back, ShowBrand }) {
     window.location.href = des
    }
   return (
-    <div className="min-w-[250px] justify-center flex sm:w-[480px]  h-[220px] mx-auto md:mb-3 xs:mb-10 md:mb-3">
+    <div className="min-w-[250px] justify-center flex sm:w-[480px]  h-[200px] mx-auto md:mb-3 xs:mb-10 md:mb-3">
       <figure
-        className="relative  flex justify-center shrink-0 mx-auto  h-[220px]  w-[100%]  rounded-2xl  overflow-hidden transition-colors"
+        className="relative  flex justify-center shrink-0 mx-auto  h-[200px]  w-[100%]  rounded-2xl  overflow-hidden transition-colors"
         style={{ backgroundColor: cardSitting.color }}
       >
         <div
-          className={" w-[100%]      h-[220px] "}
+          className={" w-[100%]      h-[200px] "}
           style={{ position: "relative", maxWidth: "480px" }}
         >
           {!back ? (
