@@ -7,7 +7,7 @@ export default function CustomStepper({ activeStep }) {
 	const { t } = useTranslation();
 
 	return (
-		<div className="flex justify-center">
+		<div className="flex justify-center flex-wrap">
 			<Stepper
 				activeStep={activeStep}
 				alternativeLabel
