@@ -16,7 +16,7 @@ const goToSite = (des)=>{
         <img
           src={back ? card.cardBack : card.cardFront}
           alt="card"
-        className="object-cover rounded-2xl   xs:w-max-[280px] h-[180px] md:h-[240px] md:w-[450px]  "
+        className="object-cover rounded-2xl   w-max-[280px] h-[180px] md:h-[240px] md:w-[450px]  "
         />
      
 

@@ -26,7 +26,7 @@ export default function CardPreview({ cardSitting, back, ShowBrand }) {
         >
           {!back ? (
             <>
-              <div className="absolute   min-w-[280px] mx-auto     lg:w-[450px]     md:h-[240px]   h-[180px] ">
+              <div className="absolute    mx-auto  ">
                 {cardSitting.shape ? (
                   <img
                     src={cardSitting.shape}

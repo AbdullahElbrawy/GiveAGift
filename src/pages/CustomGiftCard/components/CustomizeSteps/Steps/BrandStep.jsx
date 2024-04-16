@@ -35,7 +35,7 @@ const [stores,setStores] = React.useState([])
 				{t("customCard.brand.title")}
 			</Typography>
 
-			<ul className="flex justify-center gap-12 flex-wrap">
+			<ul className="flex justify-center gap-12 px-3 flex-wrap">
 				{stores.map(({ logoName,logoWithoutBackground, logoImage,brandUrl }) => (
 				
 					<li key={logoName}>
