@@ -32,7 +32,7 @@ export default function CardPreview({ cardSitting, back, ShowBrand }) {
                     src={cardSitting.shape}
                     height={200}
                     alt="gift card"
-                    className="rounded-2xl  object-fill mx-auto  sm:min-w-[280px]    lg:w-[450px]     md:h-[240px]   h-[180px]  object-fill absolute  transition duration-500 group-hover:opacity-0 group-hover:scale-75 z-10"
+                    className="rounded-2xl  object-fill mx-auto  sm:min-w-[220px]    lg:w-[450px]     md:h-[240px]   h-[180px]  object-fill absolute  transition duration-500 group-hover:opacity-0 group-hover:scale-75 z-10"
                   />
                 ) : null}
               </div>
