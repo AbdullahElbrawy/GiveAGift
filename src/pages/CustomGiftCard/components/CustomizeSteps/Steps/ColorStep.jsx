@@ -40,7 +40,7 @@ export default function ColorStep({ t, color, onColorChange }) {
 			{cardColors.map((cardColor, index) => (
                     <li key={index}>
                         <button
-                            className={`sm:w-9 sm:h-9 rounded-full ${
+                            className={`w-6 h-6 sm:w-9 sm:h-9 rounded-full ${
                                 cardColor === color ? "outline-none ring-2 ring-offset-8 ring-red-500" : ""
                             }`}
                             style={{ backgroundColor: cardColor }}
