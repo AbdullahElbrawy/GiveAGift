@@ -26,7 +26,7 @@ export default function CardPreview({ cardSitting, back, ShowBrand }) {
         >
           {!back ? (
             <>
-              <div className="absolute    mx-auto  ">
+              <div className="absolute w-full   mx-auto  ">
                 {cardSitting.shape ? (
                   <img
                     src={cardSitting.shape}
@@ -37,7 +37,7 @@ export default function CardPreview({ cardSitting, back, ShowBrand }) {
                 ) : null}
               </div>
 
-              <div className={`absolute top-2 right-2 z-10`}>
+              <div className={`absolute top-2  right-2 z-10`}>
                 {cardSitting.brand.logoName ? (
                   <img
                     src={cardSitting.brand.logoWithoutBackground}
