@@ -36,7 +36,7 @@ export default function ColorStep({ t, color, onColorChange }) {
 				{t("customCard.color.title")}
 			</Typography>
 
-			<ul className="flex justify-center gap-6 px-3 flex-wrap">
+			<ul className="flex justify-center gap-6 px-3 w-full flex-wrap">
 			{cardColors.map((cardColor, index) => (
                     <li key={index}>
                         <button
