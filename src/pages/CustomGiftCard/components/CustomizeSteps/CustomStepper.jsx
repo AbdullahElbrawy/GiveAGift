@@ -11,7 +11,7 @@ export default function CustomStepper({ activeStep }) {
 			<Stepper
 				activeStep={activeStep}
 				alternativeLabel
-				className="w-full"
+				className="w-full flex-wrap" 
 				sx={{
 					"& .MuiStepConnector-root": {
 						insetInlineStart: "calc(-50% + 20px)",
