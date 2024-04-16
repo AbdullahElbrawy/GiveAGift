@@ -44,7 +44,7 @@ export default function CardPreview({ cardSitting, back, ShowBrand }) {
                     alt={`${cardSitting.brand.logoName} logo`}
                     width={65}
                     height={65}
-                    className="rounded-2xl object-fill  transition duration-500 group-hover:opacity-0 group-hover:scale-75 z-10"
+                    className="rounded-2xl object-fill bg-blend-multiply  transition duration-500 group-hover:opacity-0 group-hover:scale-75 z-10"
                   />
                 ) : null}
               </div>

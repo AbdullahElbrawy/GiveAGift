@@ -36,11 +36,11 @@ export default function ShapeStep({ t, shape, onShapeChange, color }) {
 				{t("customCard.shape.title")}
 			</Typography>
 
-			<ul className="grid xl:grid-cols-2 justify-center gap-4 flex-wrap">
+			<ul className="grid xl:grid-cols-2 justify-center gap-4 flex-wrap px-5">
 				{shapes.map((cardShape) => (
 					<li
 						key={cardShape}
-						className={`rounded-2xl shadow-lg  md:h-[240px]   h-[180px]  object-contain  ${cardShape === shape ? "outline-none  ring-red-500" : ""
+						className={`rounded-2xl shadow-lg   md:h-[240px]   h-[180px]  object-contain  ${cardShape === shape ? "outline-none  ring-red-500" : ""
 							}`}
 
 						style={{ backgroundColor: color }}
