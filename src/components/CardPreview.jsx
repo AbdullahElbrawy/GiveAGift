@@ -21,12 +21,12 @@ export default function CardPreview({ cardSitting, back, ShowBrand }) {
         style={{ backgroundColor: cardSitting.color }}
       >
         <div
-          className={"   lg:w-[450px] mx-auto w-full    md:h-[240px]   h-[180px] "}
+          className={"   lg:w-[450px] mx-auto w-full  w-min-[280px]   md:h-[240px]   h-[180px] "}
           style={{ position: "relative", maxWidth: "480px" }}
         >
           {!back ? (
             <>
-              <div className="absolute w-full   mx-auto  ">
+              <div className="absolute   w-min-[280px]  mx-auto  ">
                 {cardSitting.shape ? (
                   <img
                     src={cardSitting.shape}
@@ -37,7 +37,7 @@ export default function CardPreview({ cardSitting, back, ShowBrand }) {
                 ) : null}
               </div>
 
-              <div className={`absolute top-2  right-2 z-10`}>
+              <div className={`absolute top-2 mix-blend-multiply  right-2 z-10`}>
                 {cardSitting.brand.logoName ? (
                   <img
                     src={cardSitting.brand.logoWithoutBackground}
