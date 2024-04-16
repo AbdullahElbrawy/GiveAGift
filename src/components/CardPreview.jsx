@@ -1,6 +1,5 @@
 import { Avatar, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
-
 export default function CardPreview({ cardSitting, back, ShowBrand }) {
   const { t } = useTranslation();
   const fontClassName =
@@ -37,15 +36,17 @@ export default function CardPreview({ cardSitting, back, ShowBrand }) {
                 ) : null}
               </div>
 
-              <div className={`absolute top-2 mix-blend-screen   right-2 z-10`}>
+              <div className={`absolute top-2    right-2 z-10`}>
                 {cardSitting.brand.logoName ? (
-                  <img
-                    src={cardSitting.brand.logoWithoutBackground}
-                    alt={`${cardSitting.brand.logoName} logo`}
-                    width={65}
-                    height={65}
-                    className="rounded-full object-fill    transition duration-500 group-hover:opacity-0 group-hover:scale-75 z-10"
-                  />
+                  <div className="rounded-full bg-black bg-opacity-40 p-1">
+                    <img
+                      src={cardSitting.brand.logoWithoutBackground}
+                      alt={`${cardSitting.brand.logoName} logo`}
+                      width={65}
+                      height={65}
+                      className="rounded-full object-fill     transition duration-500 group-hover:opacity-0 group-hover:scale-75 z-10"
+                    />
+                  </div>
                 ) : null}
               </div>
             </>
