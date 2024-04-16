@@ -9,7 +9,7 @@ export default function CustomGiftCard() {
 
 	return (
 		<main className=" flex items-center mt-36 md:mb-28 mb-16 md:min-h-[70dvh]">
-			<div className="flex md:flex-row flex-col items-center gap-8 lg:w-3/4 mx-auto px-5">
+			<div className="flex md:flex-row flex-col items-center gap-8 lg:w-3/4 mx-auto px-1">
 				<CardPreview cardSitting={cardSitting} back={activeStep === 3} />
 				<CustomizeSteps
 					cardSitting={cardSitting}
