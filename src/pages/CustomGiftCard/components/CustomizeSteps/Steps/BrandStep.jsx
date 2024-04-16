@@ -49,7 +49,7 @@ const [stores,setStores] = React.useState([])
 									: ""
 							}`}
 						>
-							<img src={logoImage} alt="shape" className="w-[100px] h-[100px]" />
+							<img src={logoImage} alt="shape" className="w-[100px] h-[100px] mix-blend-multiply" />
 						</button>
 					</li>
 				))}
