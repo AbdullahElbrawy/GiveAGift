@@ -87,7 +87,7 @@ export default function NavigationBtns({
   };
 
   return (
-    <div className="flex justify-between px-4 mt-6">
+    <div className="flex justify-between flex-wrap px-4 mt-6">
       <IconButton
         disabled={activeStep === 0}
         onClick={() => onActiveStepChange(activeStep - 1)}
