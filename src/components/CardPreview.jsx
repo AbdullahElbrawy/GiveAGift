@@ -17,7 +17,7 @@ export default function CardPreview({ cardSitting, back, ShowBrand }) {
   return (
     <div className="min-w-[240px] justify-center flex max-w-[380px] mx-auto md:mb-3 md:w-[380px] xs:mb-10 md:mb-3">
       <figure
-        className="relative  flex justify-center shrink-0 mx-auto   h-[180px] md:h-[240px] md:w-[450px]  rounded-2xl  overflow-hidden transition-colors"
+        className="relative  flex justify-center shrink-0 mx-auto   w-[100%]  rounded-2xl  overflow-hidden transition-colors"
         style={{ backgroundColor: cardSitting.color }}
       >
         <div
