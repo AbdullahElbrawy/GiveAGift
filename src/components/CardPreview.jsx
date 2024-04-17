@@ -14,7 +14,7 @@ export default function CardPreview({ cardSitting, back, ShowBrand }) {
     window.location.href = des
    }
   return (
-    <div className="max-w-[450px] min-w-[270px] w-full  sm:w-[450px]   justify-center flex    h-[220px] mx-auto md:mb-3 xs:mb-10 md:mb-3">
+    <div className="max-w-[450px] min-w-[250px] w-full  sm:w-[450px]   justify-center flex    h-[220px] mx-auto md:mb-3 xs:mb-10 md:mb-3">
       <figure
         className="relative  flex justify-center shrink-0 mx-auto  h-[220px]  w-[100%]  rounded-2xl  overflow-hidden transition-colors"
         style={{ backgroundColor: cardSitting.color }}
@@ -25,13 +25,13 @@ export default function CardPreview({ cardSitting, back, ShowBrand }) {
         >
           {!back ? (
             <>
-              <div className="absolute w-full  min-w-[270px]   sm:w-[450px]  h-[220px]   mx-auto  ">
+              <div className="absolute   min-w-[250px]   sm:w-[450px]  h-[220px]   mx-auto  ">
                 {cardSitting.shape ? (
                   <img
                     src={cardSitting.shape}
                     height={200}
                     alt="gift card"
-                    className="rounded-2xl  object-contain mx-auto w-full min-w-[270px]  sm:w-[450px]   h-[220px]   absolute  transition duration-500 group-hover:opacity-0 group-hover:scale-75 z-10"
+                    className="rounded-2xl  object-contain mx-auto w-full min-w-[250px]  sm:w-[450px]   h-[220px]   absolute  transition duration-500 group-hover:opacity-0 group-hover:scale-75 z-10"
                   />
                 ) : null}
               </div>
