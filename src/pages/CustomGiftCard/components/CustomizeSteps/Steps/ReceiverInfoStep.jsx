@@ -23,7 +23,7 @@ export default function ReceiverInfoStep({
 				{t("customCard.receiverInfo.title")}
 			</Typography>
 
-			<div className="flex flex-col gap-6 w-3/4 mx-auto">
+			<div className="flex flex-col gap-6 sm:w-3/4 mx-auto">
 				<FormControl fullWidth>
 					<FormLabel className="capitalize" classes={{ root: "!text-lg" }}>
 						{t("customCard.receiverInfo.name")}

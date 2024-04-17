@@ -48,7 +48,7 @@ export default function MessageAndPriceStep({
 				{t("customCard.message.title")}
 			</Typography>
 
-			<div className="flex flex-col gap-6 w-3/4 mx-auto">
+			<div className="flex flex-col gap-6 sm:w-3/4  mx-auto">
 				<FormControl fullWidth className="relative">
 					<FormLabel className="capitalize" classes={{ root: "!text-lg" }}>
 						{t("customCard.message.message")}
