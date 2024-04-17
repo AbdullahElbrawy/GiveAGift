@@ -27,7 +27,7 @@ export default function ColorStep({ t, color, onColorChange }) {
     }, [])
 
 	return (
-		<div className="flex flex-col items-center max-w-[690px] gap-6">
+		<div className="flex flex-col items-center max-w-[600px] gap-6">
 			<Typography
 				variant="h4"
 				className="md:!text-4xl !text-3xl capitalize"
