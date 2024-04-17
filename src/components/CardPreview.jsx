@@ -20,18 +20,18 @@ export default function CardPreview({ cardSitting, back, ShowBrand }) {
         style={{ backgroundColor: cardSitting.color }}
       >
         <div
-          className={" w-[100%]      h-[220px] "}
+          className={" w-[100%]   w-full   h-[220px] "}
           style={{ position: "relative", maxWidth: "480px" }}
         >
           {!back ? (
             <>
-              <div className="absolute max-w-[450px]  min-w-[270px]  sm:w-[450px]  h-[220px]   mx-auto  ">
+              <div className="absolute w-full  min-w-[270px]   sm:w-[450px]  h-[220px]   mx-auto  ">
                 {cardSitting.shape ? (
                   <img
                     src={cardSitting.shape}
                     height={200}
                     alt="gift card"
-                    className="rounded-2xl  object-contain mx-auto max-w-[450px]  min-w-[270px]  sm:w-[450px]   h-[220px]   absolute  transition duration-500 group-hover:opacity-0 group-hover:scale-75 z-10"
+                    className="rounded-2xl  object-contain mx-auto w-full min-w-[270px]  sm:w-[450px]   h-[220px]   absolute  transition duration-500 group-hover:opacity-0 group-hover:scale-75 z-10"
                   />
                 ) : null}
               </div>
