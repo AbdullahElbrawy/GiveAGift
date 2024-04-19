@@ -16,6 +16,7 @@ const GlobalFilter = ({ filter, setFilter }) => {
         <span>
             Search: {' '}
             <input
+            className='p-5 ml-5'
                 value={value || ''}
                 onChange={e => setValue(e.target.value)}
                 placeholder="Type to search..."
@@ -108,11 +109,9 @@ const TransactionsTable = () => {
     return (
         <div>
          
-            <div className='flex justify-end'>
-            <button onClick={handleExport} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-3">
-                Export Transactions
-            </button>
-                <input
+            <div className='flex justify-between gap-3'>
+               <div className='flex justify-between gap-3'> 
+               <input
                     type="date"
                     value={startDate}
                     onChange={e => setStartDate(e.target.value)}
@@ -122,8 +121,15 @@ const TransactionsTable = () => {
                     value={endDate}
                     onChange={e => setEndDate(e.target.value)}
                 />
+                  <button onClick={handleExport} className="bg-secondary-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-3">
+                Export Transactions
+            </button>
+            </div> 
+               <div>
+               <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
+               </div>
             </div>
-            <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
+         
             <div className="overflow-x-auto">
                 <table {...getTableProps()} className="min-w-full divide-y divide-gray-200 mt-5">
                     <thead className="bg-gray-50">
