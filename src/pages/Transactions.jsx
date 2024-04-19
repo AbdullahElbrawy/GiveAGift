@@ -26,38 +26,40 @@ const GlobalFilter = ({ filter, setFilter }) => {
 
 const TransactionsTable = () => {
     const [data, setData] = useState([]);
+    const [startDate, setStartDate] = useState(null);
+    const [endDate, setEndDate] = useState(null);
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.get('https://gifts-backend.onrender.com/api/transactions');
-                // Map the response data to match your table structure
-                setData(response.data.map(tr => ({
-                      
-                    transactionId: tr?.cartId,
-                    paymentValue: tr.paymentValue,
-                    messageDate: new Date(tr.messageDate).toLocaleString(),
-                    cardUrl: tr.cardUrl,
-                    processDate: new Date(tr.processDate).toLocaleString(),
-                   
-                })));
-            } catch (error) {
-                console.error('Failed to fetch transactions:', error);
-            }
-        };
         fetchData();
-   
-    }, []);
-    
+    }, [startDate, endDate]);
+
+    const fetchData = async () => {
+        try {
+            const response = await axios.get('https://gifts-backend.onrender.com/api/transactions', {
+                params: {
+                    startDate,
+                    endDate
+                }
+            });
+            // Map the response data to match your table structure
+            setData(response.data.map(tr => ({
+                transactionId: tr?.cartId,
+                paymentValue: tr.paymentValue,
+                messageDate: new Date(tr.messageDate).toLocaleString(),
+                cardUrl: tr.cardUrl,
+                processDate: new Date(tr.processDate).toLocaleString(),
+            })));
+        } catch (error) {
+            console.error('Failed to fetch transactions:', error);
+        }
+    };
+
     const columns = useMemo(() => [
-     
         { Header: 'Transaction ID', accessor: 'transactionId' },
         { Header: 'Payment Value', accessor: 'paymentValue' },
         { Header: 'Message Date', accessor: 'messageDate' },
         { Header: 'Card URL', accessor: 'cardUrl', Cell: ({ value }) => <a href={value} target="_blank" rel="noopener noreferrer">View Card</a> },
         { Header: 'Process Date', accessor: 'processDate' },
-     
-        // { Header: 'Brand Logos', accessor: 'brandLogos', Cell: ({ value }) => value.map((url, index) => url ? <img key={index} src={url} alt="Brand" style={{ width: 50, height: 50 }}/> : 'N/A') }
     ], []);
 
     const {
@@ -79,40 +81,50 @@ const TransactionsTable = () => {
     } = useTable({ columns, data }, useGlobalFilter, useFilters, useSortBy, usePagination);
 
     const { globalFilter, pageIndex } = state;
-    const exportTransactions = async () => {
+
+    const handleExport = async () => {
         try {
             const response = await axios.get('https://gifts-backend.onrender.com/api/download-transactions', {
-                responseType: 'blob', // Important for downloading files
+                responseType: 'blob',
+                params: {
+                    startDate,
+                    endDate
+                }
             });
 
-            // Create a URL to the file blob
             const url = window.URL.createObjectURL(new Blob([response.data]));
-
-            // Create a temporary anchor element
             const link = document.createElement('a');
             link.href = url;
-            link.setAttribute('download', 'transactions.xlsx'); // Set the filename for download
+            link.setAttribute('download', 'transactions.xlsx');
             document.body.appendChild(link);
-
-            // Trigger the click event to initiate download
             link.click();
-
-            // Cleanup
             link.parentNode.removeChild(link);
             window.URL.revokeObjectURL(url);
         } catch (error) {
             console.error('Error exporting transactions:', error);
         }
     };
+
     return (
         <div>
-         <button onClick={exportTransactions} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-3">
+            <button onClick={handleExport} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-3">
                 Export Transactions
             </button>
+            <div>
+                <input
+                    type="date"
+                    value={startDate}
+                    onChange={e => setStartDate(e.target.value)}
+                />
+                <input
+                    type="date"
+                    value={endDate}
+                    onChange={e => setEndDate(e.target.value)}
+                />
+            </div>
             <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
             <div className="overflow-x-auto">
                 <table {...getTableProps()} className="min-w-full divide-y divide-gray-200 mt-5">
-                    {/* Table Head */}
                     <thead className="bg-gray-50">
                         {headerGroups.map(headerGroup => (
                             <tr {...headerGroup.getHeaderGroupProps()}>
@@ -127,7 +139,6 @@ const TransactionsTable = () => {
                             </tr>
                         ))}
                     </thead>
-                    {/* Table Body */}
                     <tbody {...getTableBodyProps()} className="bg-white divide-y divide-gray-200">
                         {page.map(row => {
                             prepareRow(row);
@@ -144,7 +155,6 @@ const TransactionsTable = () => {
                     </tbody>
                 </table>
             </div>
-            {/* Pagination Controls */}
             <div className="pagination flex  gap-5 ml-auto justify-end">
                 <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>{'<<'}</button>
                 <button onClick={() => previousPage()} disabled={!canPreviousPage}>Previous</button>
