@@ -22,7 +22,7 @@ export default function CardPreview({ cardSitting, back, ShowBrand }) {
   {`
   @media (min-width: 600px) {
     .card{
-      min-width:450px
+      min-width:400px
     }
 
   }
