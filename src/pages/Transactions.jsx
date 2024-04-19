@@ -79,10 +79,36 @@ const TransactionsTable = () => {
     } = useTable({ columns, data }, useGlobalFilter, useFilters, useSortBy, usePagination);
 
     const { globalFilter, pageIndex } = state;
+    const exportTransactions = async () => {
+        try {
+            const response = await axios.get('https://gifts-backend.onrender.com/api/download-transactions', {
+                responseType: 'blob', // Important for downloading files
+            });
 
+            // Create a URL to the file blob
+            const url = window.URL.createObjectURL(new Blob([response.data]));
+
+            // Create a temporary anchor element
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', 'transactions.xlsx'); // Set the filename for download
+            document.body.appendChild(link);
+
+            // Trigger the click event to initiate download
+            link.click();
+
+            // Cleanup
+            link.parentNode.removeChild(link);
+            window.URL.revokeObjectURL(url);
+        } catch (error) {
+            console.error('Error exporting transactions:', error);
+        }
+    };
     return (
         <div>
-         
+         <button onClick={exportTransactions} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-3">
+                Export Transactions
+            </button>
             <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
             <div className="overflow-x-auto">
                 <table {...getTableProps()} className="min-w-full divide-y divide-gray-200 mt-5">
