@@ -17,7 +17,7 @@ export default function CardPreview({ cardSitting, back, ShowBrand }) {
   };
 
   return (
-    <div className="aspect-video md:h-[240px]   h-[180px] md:w-[380px] justify-center flex mx-auto md:mb-3 xs:mb-10 md:mb-3">
+    <div className="aspect-video md:h-[220px]   h-[180px] md:w-[380px] justify-center flex mx-auto md:mb-3 xs:mb-10 md:mb-3">
       <figure
         className="relative flex justify-center shrink-0 mx-auto h-full w-full rounded-2xl overflow-hidden transition-colors"
         style={{ backgroundColor: cardSitting.color }}
