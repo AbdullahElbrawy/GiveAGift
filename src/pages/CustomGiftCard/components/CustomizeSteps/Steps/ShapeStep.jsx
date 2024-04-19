@@ -36,7 +36,7 @@ export default function ShapeStep({ t, shape, onShapeChange, color }) {
 				{t("customCard.shape.title")}
 			</Typography>
 
-			<ul className="grid xl:grid-cols-2 justify-center gap-4 flex-wrap px-5">
+			<ul className="grid xl:grid-cols-2 justify-center gap-4 flex-wrap px-2">
 				{shapes.map((cardShape) => (
 					<li
 						key={cardShape}
