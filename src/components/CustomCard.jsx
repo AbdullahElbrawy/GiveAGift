@@ -13,6 +13,12 @@ export default function CustomCard({ title, description, front, back, type }) {
              max-width:380px
             }
           }
+          @media (max-width: 320px) {
+            .card {
+             margin:auto;
+             max-width:260px
+            }
+          }
         `}
       </style>
 
@@ -29,7 +35,7 @@ export default function CustomCard({ title, description, front, back, type }) {
                 
               
               }}
-              className="min-w-[300px] w-[100%]"
+              className="min-w-[280px] w-[100%]"
             >
               {" "}
               {/* Aspect ratio container */}
