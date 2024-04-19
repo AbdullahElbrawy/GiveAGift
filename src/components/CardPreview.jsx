@@ -17,9 +17,15 @@ export default function CardPreview({ cardSitting, back, ShowBrand }) {
   };
 
   return (
-    <div className="card md:h-[220px]   h-[180px] md:w-[380px] justify-center flex mx-auto md:mb-3 xs:mb-10 md:mb-3">
+    <div className="card md:h-[220px]    h-[180px] md:w-[380px] justify-center flex mx-auto md:mb-3 xs:mb-10 md:mb-3">
         <style>
   {`
+  @media (min-width: 599px) {
+    .card{
+      min-width:450px
+    }
+
+  }
     @media (max-width: 599px) {
       .card {
        margin:auto;
