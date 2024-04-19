@@ -16,7 +16,7 @@ const GlobalFilter = ({ filter, setFilter }) => {
         <span>
             Search: {' '}
             <input
-            className='p-5 ml-5'
+            className='p-5 ml-5 border border-gray-500 border-solid'
                 value={value || ''}
                 onChange={e => setValue(e.target.value)}
                 placeholder="Type to search..."
@@ -121,7 +121,7 @@ const TransactionsTable = () => {
                     value={endDate}
                     onChange={e => setEndDate(e.target.value)}
                 />
-                  <button onClick={handleExport} className="bg-secondary-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-3">
+                  <button onClick={handleExport} className="bg-secondary-500  text-white font-bold py-2 px-4 rounded my-3">
                 Export Transactions
             </button>
             </div> 

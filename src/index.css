@@ -28,3 +28,7 @@ body,html{
 	word-wrap: break-word;       
 	white-space: pre-wrap;       
   }
+
+  *:focus{
+	outline: 1px solid #b62026 !important;
+  }
