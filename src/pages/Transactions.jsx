@@ -119,7 +119,7 @@ const TransactionsTable = () => {
                 </table>
             </div>
             {/* Pagination Controls */}
-            <div className="pagination flex  gap-5 ml-auto justify-content-end">
+            <div className="pagination flex  gap-5 ml-auto justify-end">
                 <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>{'<<'}</button>
                 <button onClick={() => previousPage()} disabled={!canPreviousPage}>Previous</button>
                 <button onClick={() => nextPage()} disabled={!canNextPage}>Next</button>
