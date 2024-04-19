@@ -17,7 +17,7 @@ export default function CustomizeSteps({
 	return (
 		<SuccessHandler successMsg={successMsg} setSuccessMsg={setSuccessMsg}>
 			<ErrorHandler errorMsg={errorMsg} setErrorMsg={setErrorMsg}>
-				<div className="flex flex-col gap-9 grow max-w-[700px]">
+				<div className="flex flex-col gap-9 grow max-w-[760px]">
 					<CustomStepper activeStep={activeStep} />
 
 					<Steps
