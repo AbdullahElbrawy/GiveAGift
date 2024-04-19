@@ -109,7 +109,7 @@ const TransactionsTable = () => {
     return (
         <div>
          
-            <div className='flex justify-between gap-3'>
+            <div className='flex justify-between gap-3 items-center'>
                <div className='flex justify-between gap-3'> 
                <input
                     type="date"
