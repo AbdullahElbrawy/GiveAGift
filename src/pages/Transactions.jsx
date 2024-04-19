@@ -125,7 +125,7 @@ const TransactionsTable = () => {
                 Export Transactions
             </button>
             </div> 
-               <div>
+               <div className='flex items-center'>
                <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
                </div>
             </div>
