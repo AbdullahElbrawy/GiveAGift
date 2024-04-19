@@ -16,7 +16,7 @@ const GlobalFilter = ({ filter, setFilter }) => {
         <span>
             Search: {' '}
             <input
-            className='p-5 ml-5 border border-gray-500 border-solid'
+            className='p-2 ml-5 border border-gray-500 border-solid'
                 value={value || ''}
                 onChange={e => setValue(e.target.value)}
                 placeholder="Type to search..."
