@@ -23,13 +23,16 @@ export default function CardPreview({ cardSitting, back, ShowBrand }) {
     @media (max-width: 599px) {
       .card {
        margin:auto;
-       max-width:380px
+       max-width:380px;
+
+       width:100%
       }
     }
     @media (max-width: 320px) {
       .card {
        margin:auto;
-       max-width:260px
+       max-width:260px;
+       width:100%
       }
     }
   `}
