@@ -239,7 +239,7 @@ const Dashboard = () => {
                         <input type="text" id="color" name="color" onChange={handleInputChange} className="w-full text-md text-gray-700 py-1 px-2 border rounded" />
                     </div>
                     <div className="mb-5">
-                        <label htmlFor="font" className="block text-gray-700 text-md font-bold mb-2">{t('dashboard.fontNameLabel')}</label>
+                        <label htmlFor="font" className="block text-gray-700 text-md font-bold mb-2">{t('dashboard.fontLabel')}</label>
                         <input type="text" id="font" name="font" onChange={handleInputChange} className="w-full text-md text-gray-700 py-1 px-2 border rounded" />
                     </div>
                     <div className="mb-5">
