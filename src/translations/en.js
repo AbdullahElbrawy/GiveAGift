@@ -148,6 +148,9 @@ export default {
       typeToSearch: "Type to search...",
       transactionId: "Transaction ID",
       paymentValue: "Payment Value",
+      shopName:"shop name",
+      clientName:"Client Name",
+      clientPhone:"Client Phone",
       messageDate: "Message Date",
       viewCard: "View Card",
       cardUrl: "Card URL",
@@ -157,6 +160,7 @@ export default {
       next: "Next",
       page: "Page",
       of: "of",
+      
     },
     
   },

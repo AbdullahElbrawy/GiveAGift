@@ -149,6 +149,10 @@ export default {
       typeToSearch: "اكتب للبحث...",
       transactionId: "معرف العملية",
       paymentValue: "قيمة الدفع",
+      shopName: "اسم المتجر",
+      clientName: "اسم العميل",
+      clientPhone: "رقم العميل",
+    
       messageDate: "تاريخ الرسالة",
       viewCard: "عرض البطاقة",
       cardUrl: "رابط البطاقة",

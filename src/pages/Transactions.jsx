@@ -51,7 +51,12 @@ const TransactionsTable = () => {
                 paymentValue: tr.paymentValue,
                 messageDate: new Date(tr.messageDate).toLocaleString(),
                 cardUrl: tr.cardUrl,
+                shopName: tr.shopName,
+                clientName: tr.clientName,
+                clientPhone: tr.clientPhone,
+
                 processDate: new Date(tr.processDate).toLocaleString(),
+                
             })));
         } catch (error) {
             console.error('Failed to fetch transactions:', error);
@@ -63,7 +68,12 @@ const TransactionsTable = () => {
         { Header: t('transactions.paymentValue'), accessor: 'paymentValue' },
         { Header: t('transactions.messageDate'), accessor: 'messageDate' },
         { Header: t('transactions.cardUrl'), accessor: 'cardUrl', Cell: ({ value }) => <a href={value} target="_blank" rel="noopener noreferrer">{t('transactions.viewCard')}</a> },
+        { Header: t('transactions.shopName'), accessor: 'shopName' },
+        { Header: t('transactions.clientName'), accessor: 'clientName' },
+        { Header: t('transactions.clientPhone'), accessor: 'clientPhone' },
+
         { Header: t('transactions.processDate'), accessor: 'processDate' },
+
     ], [t]);
 
     const {
