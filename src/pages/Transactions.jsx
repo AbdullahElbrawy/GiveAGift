@@ -1,8 +1,10 @@
 import React, { useMemo, useEffect, useState } from 'react';
 import { useTable, useSortBy, useFilters, useGlobalFilter, usePagination } from 'react-table';
 import axios from 'axios';
+import { useTranslation } from 'react-i18next';
 
 const GlobalFilter = ({ filter, setFilter }) => {
+    const { t } = useTranslation();
     const [value, setValue] = useState(filter);
 
     useEffect(() => {
@@ -14,18 +16,19 @@ const GlobalFilter = ({ filter, setFilter }) => {
 
     return (
         <span>
-            Search: {' '}
+            {t('transactions.search')}:{' '}
             <input
-            className='p-2 ml-5 border border-gray-500 border-solid'
+                className='p-2 ml-5 border border-gray-500 border-solid'
                 value={value || ''}
                 onChange={e => setValue(e.target.value)}
-                placeholder="Type to search..."
+                placeholder={t('transactions.typeToSearch')}
             />
         </span>
     );
 };
 
 const TransactionsTable = () => {
+    const { t } = useTranslation();
     const [data, setData] = useState([]);
     const [startDate, setStartDate] = useState(null);
     const [endDate, setEndDate] = useState(null);
@@ -56,12 +59,12 @@ const TransactionsTable = () => {
     };
 
     const columns = useMemo(() => [
-        { Header: 'Transaction ID', accessor: 'transactionId' },
-        { Header: 'Payment Value', accessor: 'paymentValue' },
-        { Header: 'Message Date', accessor: 'messageDate' },
-        { Header: 'Card URL', accessor: 'cardUrl', Cell: ({ value }) => <a href={value} target="_blank" rel="noopener noreferrer">View Card</a> },
-        { Header: 'Process Date', accessor: 'processDate' },
-    ], []);
+        { Header: t('transactions.transactionId'), accessor: 'transactionId' },
+        { Header: t('transactions.paymentValue'), accessor: 'paymentValue' },
+        { Header: t('transactions.messageDate'), accessor: 'messageDate' },
+        { Header: t('transactions.cardUrl'), accessor: 'cardUrl', Cell: ({ value }) => <a href={value} target="_blank" rel="noopener noreferrer">{t('transactions.viewCard')}</a> },
+        { Header: t('transactions.processDate'), accessor: 'processDate' },
+    ], [t]);
 
     const {
         getTableProps,
@@ -122,8 +125,8 @@ const TransactionsTable = () => {
                     onChange={e => setEndDate(e.target.value)}
                 />
                   <button onClick={handleExport} className="bg-secondary-500  text-white font-bold py-2 px-4 rounded my-3">
-                Export Transactions
-            </button>
+                    {t('transactions.exportTransactions')}
+                  </button>
             </div> 
                <div className='flex items-center'>
                <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
@@ -164,13 +167,13 @@ const TransactionsTable = () => {
             </div>
             <div className="pagination flex  gap-5 ml-auto justify-end mt-5">
                 <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>{'<<'}</button>
-                <button onClick={() => previousPage()} disabled={!canPreviousPage}>Previous</button>
-                <button onClick={() => nextPage()} disabled={!canNextPage}>Next</button>
+                <button onClick={() => previousPage()} disabled={!canPreviousPage}>{t('transactions.previous')}</button>
+                <button onClick={() => nextPage()} disabled={!canNextPage}>{t('transactions.next')}</button>
                 <button onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>{'>>'}</button>
                 <span>
-                    Page{' '}
+                    {t('transactions.page')}{' '}
                     <strong>
-                        {pageIndex + 1} of {pageOptions.length}
+                        {pageIndex + 1} {t('transactions.of')} {pageOptions.length}
                     </strong>
                 </span>
             </div>

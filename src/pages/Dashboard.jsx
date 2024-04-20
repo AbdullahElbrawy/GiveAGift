@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios'
 import TransactionsTable from './Transactions'; // Assuming you save it in the same directory
+import { useTranslation } from 'react-i18next'; // Importing useTranslation hook
 
 const Dashboard = () => {
 
@@ -17,6 +18,7 @@ const Dashboard = () => {
         brandUrl: '',
         fontFile: null, // Added for font file upload
     });
+    const { t } = useTranslation();
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -36,7 +38,7 @@ const Dashboard = () => {
                 if (file && file.size <= fileSizeLimit) {
                     setFormData(prev => ({ ...prev, [name]: file }));
                 } else {
-                    alert("File size must be less than 10 MB!");
+                    alert(t('dashboard.fileSizeAlert'));
                 }
             }
         }
@@ -144,72 +146,72 @@ const Dashboard = () => {
 
     return (
 
-        <div className="container mx-auto   px-4 py-[200px]">
+        <div className="container mx-auto px-4 py-[200px]">
             <div className="grid gap-8 border-2 border-black py-10 px-10">
                 <form onSubmit={handleSubmit} >
                     <div className="mb-5">
-                        <label htmlFor="logoName" className="block text-gray-700 text-md font-bold mb-2">Logo Name Brand</label>
+                        <label htmlFor="logoName" className="block text-gray-700 text-md font-bold mb-2">{t('dashboard.logoNameLabel')}</label>
                         <input type="text" id="logoName" name="logoName" onChange={handleInputChange} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
                     </div>
                     <div className="mb-5">
-                        <label htmlFor="logoImage" className="block text-gray-700 text-md font-bold mb-2">Logo Image</label>
+                        <label htmlFor="logoImage" className="block text-gray-700 text-md font-bold mb-2">{t('dashboard.logoImageLabel')}</label>
                         <input type="file" id="logoImage" name="logoImage" onChange={handleFileChange} className="w-full text-md text-gray-700 py-1 px-2 border rounded" accept="image/png,image/jpg, image/jpeg, image/gif" />
                     </div>
                     <div className="mb-5">
-                        <label htmlFor="brandDescription" className="block text-gray-700 text-md font-bold mb-2">Brand Description</label>
+                        <label htmlFor="brandDescription" className="block text-gray-700 text-md font-bold mb-2">{t('dashboard.brandDescriptionLabel')}</label>
                         <textarea id="brandDescription" name="brandDescription" onChange={handleInputChange} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
                     </div>
                     <div className="mb-5">
-                        <label htmlFor="logoWithoutBackground" className="block text-gray-700 text-md font-bold mb-2">Logo Without Background</label>
+                        <label htmlFor="logoWithoutBackground" className="block text-gray-700 text-md font-bold mb-2">{t('dashboard.logoWithoutBackgroundLabel')}</label>
                         <input type="file" id="logoWithoutBackground" name="logoWithoutBackground" onChange={handleFileChange} className="w-full text-md text-gray-700 py-1 px-2 border rounded" accept="image/png, image/jpeg, image/gif" />
                     </div>
                     <div className="mb-5">
-                        <label htmlFor="brandUrl" className="block text-gray-700 text-md font-bold mb-2">Brand Url</label>
+                        <label htmlFor="brandUrl" className="block text-gray-700 text-md font-bold mb-2">{t('dashboard.brandUrlLabel')}</label>
                         <input type="text" id="brandUrl" name="brandUrl" onChange={handleInputChange} className="w-full text-md text-gray-700 py-1 px-2 border rounded" />
                     </div>
-                    <button type="submit" className="bg-secondary-500 hover:bg-rose-500 text-white font-bold w-full  py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                        Submit
+                    <button type="submit" className="bg-secondary-500 hover:bg-rose-500 text-white font-bold w-full py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                        {t('dashboard.submitButton')}
                     </button>
                 </form>
             </div>
-            <div className='grid gap-8 border-2 mt-10  border-black py-10 px-10'>
+            
+           {/* Second form section */}
+           <div className="grid gap-8 border-2 mt-10 border-black py-10 px-10">
                 <form onSubmit={handleSubmitCards}>
                     <div className="mb-5">
-                        <label htmlFor="cardFront" className="block text-gray-700 text-md font-bold mb-2">card front</label>
+                        <label htmlFor="cardFront" className="block text-gray-700 text-md font-bold mb-2">{t('dashboard.cardFrontLabel')}</label>
                         <input type="file" id="cardFront" name="cardFront" onChange={handleFileChange} className="w-full text-md text-gray-700 py-1 px-2 border rounded" accept="image/png, image/jpeg, image/gif" />
                     </div>
                     <div className="mb-5">
-                        <label htmlFor="cardBack" className="block text-gray-700 text-md font-bold mb-2">card back</label>
+                        <label htmlFor="cardBack" className="block text-gray-700 text-md font-bold mb-2">{t('dashboard.cardBackLabel')}</label>
                         <input type="file" id="cardBack" name="cardBack" onChange={handleFileChange} className="w-full text-md text-gray-700 py-1 px-2 border rounded" accept="image/png, image/jpeg, image/gif" />
                     </div>
                     <div className="mb-5">
-                        <label htmlFor="logoImage" className="block text-gray-700 text-md font-bold mb-2">Logo Image</label>
+                        <label htmlFor="logoImage" className="block text-gray-700 text-md font-bold mb-2">{t('dashboard.logoImageLabel')}</label>
                         <input type="file" id="logoImage" name="logoImage" onChange={handleFileChange} className="w-full text-md text-gray-700 py-1 px-2 border rounded" accept="image/png, image/jpeg, image/gif" />
                     </div>
-
                     <div className="mb-5">
-                        <label htmlFor="Price" className="block text-gray-700 text-md font-bold mb-2">price</label>
-                        <input type="number" min='100' max='500' id="Price" name="price" onChange={handleInputChange} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+                        <label htmlFor="price" className="block text-gray-700 text-md font-bold mb-2">{t('dashboard.priceLabel')}</label>
+                        <input type="number" min="100" max="500" id="price" name="price" onChange={handleInputChange} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
                     </div>
                     <div className="mb-5">
-                        <label htmlFor="brand" className="block text-gray-700 text-md font-bold mb-2">brand </label>
+                        <label htmlFor="brand" className="block text-gray-700 text-md font-bold mb-2">{t('dashboard.brandLabel')}</label>
                         <input type="text" id="brand" name="brand" onChange={handleInputChange} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
                     </div>
                     <div className="mb-5">
-                        <label htmlFor="brandUrl" className="block text-gray-700 text-md font-bold mb-2">Brand Url</label>
+                        <label htmlFor="brandUrl" className="block text-gray-700 text-md font-bold mb-2">{t('dashboard.brandUrlLabel')}</label>
                         <input type="text" id="brandUrl" name="brandUrl" onChange={handleInputChange} className="w-full text-md text-gray-700 py-1 px-2 border rounded" />
                     </div>
-                    <button type="submit" className="bg-secondary-500 hover:bg-rose-500 text-white font-bold py-2 w-full  px-4 rounded focus:outline-none focus:shadow-outline">
-                        Submit
+                    <button type="submit" className="bg-secondary-500 hover:bg-rose-500 text-white font-bold py-2 w-full px-4 rounded focus:outline-none focus:shadow-outline">
+                        {t('dashboard.submitButton')}
                     </button>
                 </form>
             </div>
-            <div className='grid gap-8 border-2 border-black mt-10  py-10 px-10'>
+          {/* Third form section */}
+          <div className="grid gap-8 border-2 border-black mt-10 py-10 px-10">
                 <form onSubmit={handleCustomCardSubmit}>
-
                     <div className="mb-5">
-                        <label htmlFor="shapes" className="block text-gray-700 text-md font-bold mb-2">Shapes</label>
-
+                        <label htmlFor="shapes" className="block text-gray-700 text-md font-bold mb-2">{t('dashboard.shapesLabel')}</label>
                         <input
                             type="file"
                             id="shapes"
@@ -220,37 +222,35 @@ const Dashboard = () => {
                             accept="image/png, image/jpeg, image/gif"
                         />
                         <div id="file-size-warning" style={{ color: "red", display: "none" }}>
-                            File size must be less than 10 MB!
+                            {t('dashboard.fileSizeWarning')}
                         </div>
                     </div>
                     <button type="submit" className="bg-secondary-500 hover:bg-rose-500 text-white font-bold w-full py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                        Submit
+                        {t('dashboard.submitButton')}
                     </button>
                 </form>
-
-         
-            
             </div>
-            <div className='grid gap-8 border-2 border-black mt-10  py-10 px-10'>
-                    <form onSubmit={handleSubmitAssets}>
-                        <div className="mb-5">
-                            <label htmlFor="color" className="block text-gray-700 text-md font-bold mb-2">Color</label>
-                            <input type="text" id="color" name="color" onChange={handleInputChange} className="w-full text-md text-gray-700 py-1 px-2 border rounded" />
-                        </div>
-                        <div className="mb-5">
-                            <label htmlFor="font" className="block text-gray-700 text-md font-bold mb-2">Font Name</label>
-                            <input type="text" id="font" name="font" onChange={handleInputChange} className="w-full text-md text-gray-700 py-1 px-2 border rounded" />
-                        </div>
-                        <div className="mb-5">
-                            <label htmlFor="fontFile" className="block text-gray-700 text-md font-bold mb-2">Font File</label>
-                            <input type="file" id="fontFile" name="fontFile" onChange={handleFileChange} className="w-full text-md text-gray-700 py-1 px-2 border rounded" accept=".ttf, .otf, .woff, .woff2" />
-                        </div>
-                        <button type="submit" className="bg-secondary-500 hover:bg-rose-500 text-white font-bold w-full py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                            Submit
-                        </button>
-                    </form>
 
-                </div>
+
+             <div className='grid gap-8 border-2 border-black mt-10 py-10 px-10'>
+                <form onSubmit={handleSubmitAssets}>
+                    <div className="mb-5">
+                        <label htmlFor="color" className="block text-gray-700 text-md font-bold mb-2">{t('dashboard.colorLabel')}</label>
+                        <input type="text" id="color" name="color" onChange={handleInputChange} className="w-full text-md text-gray-700 py-1 px-2 border rounded" />
+                    </div>
+                    <div className="mb-5">
+                        <label htmlFor="font" className="block text-gray-700 text-md font-bold mb-2">{t('dashboard.fontNameLabel')}</label>
+                        <input type="text" id="font" name="font" onChange={handleInputChange} className="w-full text-md text-gray-700 py-1 px-2 border rounded" />
+                    </div>
+                    <div className="mb-5">
+                        <label htmlFor="fontFile" className="block text-gray-700 text-md font-bold mb-2">{t('dashboard.fontFileLabel')}</label>
+                        <input type="file" id="fontFile" name="fontFile" onChange={handleFileChange} className="w-full text-md text-gray-700 py-1 px-2 border rounded" accept=".ttf, .otf, .woff, .woff2" />
+                    </div>
+                    <button type="submit" className="bg-secondary-500 hover:bg-rose-500 text-white font-bold w-full py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                        {t('dashboard.submitButton')}
+                    </button>
+                </form>
+            </div>
             <div className="mt-10">
                 <TransactionsTable /> {/* Place the transactions table on the dashboard */}
             </div>
