@@ -67,7 +67,7 @@ const TransactionsTable = () => {
         { Header: t('transactions.transactionId'), accessor: 'transactionId' },
         { Header: t('transactions.paymentValue'), accessor: 'paymentValue' },
         { Header: t('transactions.messageDate'), accessor: 'messageDate' },
-        { Header: t('transactions.cardUrl'), accessor: 'cardUrl', Cell: ({ value }) => <a href={value} target="_blank" rel="noopener noreferrer">{t('transactions.viewCard')}</a> },
+        { Header: t('transactions.cardUrl'), accessor: 'cardUrl', Cell: ({ value }) => <a href={value} className='text-secondary-500' target="_blank" rel="noopener noreferrer">{t('transactions.viewCard')}</a> },
         { Header: t('transactions.shopName'), accessor: 'shopName' },
         { Header: t('transactions.clientName'), accessor: 'clientName' },
         { Header: t('transactions.clientPhone'), accessor: 'clientPhone' },
